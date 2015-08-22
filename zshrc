@@ -1,4 +1,11 @@
-ZSHRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SOURCE="${(%):-%N}"
+while [ -h "$SOURCE" ]; do
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+
+ZSHRC_DIR="$(cd "$(dirname "$SOURCE")" && pwd)"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
