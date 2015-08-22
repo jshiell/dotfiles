@@ -1,0 +1,25 @@
+cf() {
+    local CF=/usr/local/bin/cf
+    if [[ ! -x $CF ]]; then
+        echo "Cannot find cf in /usr/local/bin"
+        return 1
+    fi    
+
+    # pick color type
+    if [ $TERM = 'xterm' -o $TERM = 'xterm-color' -o $TERM = 'xterm-256color' ]; then
+        xterm_color
+    else
+        echo "${c_red}WARNING:::Terminal '${TERM}' is not supported at this time. Colourised output will not happen for Maven${c_end}"
+    fi
+
+    error=${c_bold}${c_red}
+    info=${c_end}
+    warn=${c_yellow}
+    success=${c_green}
+
+    $CF $* | sed -e "s/\( ERROR \) \(.*\)$/${error}\1 \2${c_end}/g" \
+            -e "s/\( WARN \) \(.*\)$/${warn}\1 \2${c_end}/g" 
+    return ${pipestatus[1]} 
+}
+
+export CF_COLOR=true

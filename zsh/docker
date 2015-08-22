@@ -1,0 +1,7 @@
+export DOCKER_CERT_PATH="/Users/jshiell/.docker/machine/machines/boot2docker-vm"
+export DOCKER_TLS_VERIFY=1
+export DOCKER_MACHINE_NAME="boot2docker-vm"
+
+# A hack to get around Cisco silliness
+export DOCKER_HOST=tcp://127.0.0.1:2376
+alias docker='docker --tlsverify=false'
