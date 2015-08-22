@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/jshiell/Projects/chef/repository/cookbooks/gigaspaces/recipes'
-let g:netrw_dirhist_2='/Users/jshiell/Projects/chef/repository/cookbooks/gigaspaces'
-let g:netrw_dirhist_3='/Users/jshiell/Projects/chef/repository/cookbooks/gigaspaces/templates'
-let g:netrw_dirhist_4='/Users/jshiell/Projects/chef/repository/cookbooks/gigaspaces/templates/default'
-let g:netrw_dirhist_5='/private/etc/senet'
-let g:netrw_dirhist_6='/Users/jshiell/.m2/repository'
-let g:netrw_dirhist_7='/Users/jshiell/Dropbox/Projects/canvas/.git'
