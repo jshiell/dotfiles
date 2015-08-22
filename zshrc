@@ -23,15 +23,21 @@ autoload zmv
 plugins=(brew bundler colored-man docker docker-compose git github gradle history-substring-search knife mvn osx rbenv ruby sublime sudo terminalapp tmux)
 
 if [ $UID -eq 0 ]; then
-    ZSH=~jshiell/Dropbox/etc/oh-my-zsh
+    ZSH_ROOT=~jshiell
 else
-    ZSH=$HOME/DropBox/etc/oh-my-zsh
+    ZSH_ROOT=$HOME
 fi
-if [ -f "$ZSH/oh-my-zsh.sh" ]; then
-    source $ZSH/oh-my-zsh.sh
+if [[ -f "$ZSH_ROOT/Dropbox/etc/oh-my-zsh/oh-my-zsh.sh" ]]; then
+    ZSH="$ZSH_ROOT/Dropbox/etc/oh-my-zsh"
+elif [[ -f "$ZSH_ROOT/.oh-my-zsh/oh-my-zsh.sh" ]]; then
+    ZSH="$ZSH_ROOT/.oh-my-zsh"
+elif [[ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]]; then
+    ZSH="$HOME/.oh-my-zsh"
 else
-    echo "WARNING! Can't find oh-my-zsh. Please run: git clone git://github.com/jshiell/oh-my-zsh.git $ZSH"
+    echo "WARNING! Can't find oh-my-zsh (tried $ZSH_ROOT/Dropbox/etc/oh-my-zsh; $ZSH_ROOT/.oh-my-zsh; $HOME/.oh-my-zsh)."
+    echo "Please run: git clone git://github.com/jshiell/oh-my-zsh.git ~/.oh-my-zsh"
 fi
+source "$ZSH/oh-my-zsh.sh"
 
 # Override correction thanks to dot directories
 alias knife='nocorrect knife'
@@ -42,13 +48,13 @@ __git_files () {
     _wanted files expl 'local files' _files
 }
 
-export EDITOR='vim'
 export PATH="$HOME/bin:$PATH"
 
 # Various bits & pieces
 . $ZSHRC_DIR/zsh/brew
 . $ZSHRC_DIR/zsh/cloudfoundry
 . $ZSHRC_DIR/zsh/docker
+. $ZSHRC_DIR/zsh/editor
 . $ZSHRC_DIR/zsh/go
 . $ZSHRC_DIR/zsh/iterm
 . $ZSHRC_DIR/zsh/java
