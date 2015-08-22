@@ -35,9 +35,11 @@ elif [[ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]]; then
     ZSH="$HOME/.oh-my-zsh"
 else
     echo "WARNING! Can't find oh-my-zsh (tried $ZSH_ROOT/Dropbox/etc/oh-my-zsh; $ZSH_ROOT/.oh-my-zsh; $HOME/.oh-my-zsh)."
-    echo "Please run: git clone git://github.com/jshiell/oh-my-zsh.git ~/.oh-my-zsh"
+    echo "Please run: git clone git@github.com:jshiell/oh-my-zsh.git ~/.oh-my-zsh"
 fi
-source "$ZSH/oh-my-zsh.sh"
+if [[ -n "$ZSH" ]]; then
+    source "$ZSH/oh-my-zsh.sh"
+fi
 
 # Override correction thanks to dot directories
 alias knife='nocorrect knife'
