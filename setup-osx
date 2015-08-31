@@ -54,6 +54,8 @@ for INSTALLER in ${POST_CASK_INSTALLERS}; do
     open $INSTALLER
 done 
 
+brew cleanup
+
 
 ## General settings ########################################################
 
