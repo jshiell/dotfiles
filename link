@@ -37,6 +37,7 @@ function link { # from, to
 	fi
 }
 
+link "curlrc" ".curlrc"
 link "lein" ".lein"
 link "tmux.conf" ".tmux.conf"
 link "vim" ".vim"
