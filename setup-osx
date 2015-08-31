@@ -2,17 +2,36 @@
 
 # Initial machine setup; untested in whole as yet
 
+COMPUTER_NAME="${1:-}"
+if [[ -z "$COMPUTER_NAME" ]]; then
+	echo "Usage: $0 <computer-name>"
+	exit 1
+fi
+
 BREW_APPS=(htop-osx mtr iftop terminal-notifier tmux rbenv ruby-build rbenv-bundler rbenv-bundler-ruby-version)
 CASK_APPS=(0xed 1password alfred backblaze backblaze-downloader battle-net calibre controllermate doxie dropbox firefox google-chrome google-earth gog-galaxy grandperspective hazel hipchat kaleidoscope maciasl minecraft moneydance moom mumble omnigraffle origin plex-media-server slack spotify skype steam sublime-text teamspeak-client things transmission virtualbox)
 POST_CASK_INSTALLERS=('/opt/homebrew-cask/Caskroom/backblaze/latest/Backblaze Installer.app' '/opt/homebrew-cask/Caskroom/battle-net/latest/Battle.net-Setup-enUS.app')
-# We can't install IntelliJ IDEA via brew cask yet, as it doesn't include the bundled JDK
 
+# We can't install IntelliJ IDEA via brew cask yet, as it doesn't include the bundled JDK
 # Also, Hack oddities that aren't in cask - HWMonitor, DPCIManager, KextBeast
+
+
+## Machine name ############################################################
+
+sudo scutil --set ComputerName "$COMPUTER_NAME"
+sudo scutil --set HostName "$COMPUTER_NAME"
+sudo scutil --set LocalHostName "$COMPUTER_NAME"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
+
+
+## Dot files ###############################################################
 
 git clone git@github.com:jshiell/oh-my-zsh.git ~/.oh-my-zsh
 git clone git@github.com:jshiell/dotfiles.git ~/dotfile
 
 ~/dotfiles/link
+
+## Brew & apps #############################################################
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
