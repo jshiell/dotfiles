@@ -60,6 +60,11 @@ brew cleanup
 
 ## General settings ########################################################
 
+# Turn on firewall; disallow signed software from making external requests without confirmation; activate stealth mode
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+sudo defaults write /Library/Preferences/com.apple.alf allowsignedenabled -bool false
+sudo defaults write /Library/Preferences/com.apple.alf stealthenabled -bool true
+
 # Set standby delay to 30m
 sudo pmset -a standbydelay 7200
 
