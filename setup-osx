@@ -9,7 +9,7 @@ if [[ -z "$COMPUTER_NAME" ]]; then
 fi
 
 BREW_APPS=(htop-osx mtr iftop terminal-notifier tmux rbenv ruby-build rbenv-bundler rbenv-bundler-ruby-version)
-CASK_APPS=(0xed 1password alfred backblaze backblaze-downloader battle-net calibre controllermate doxie dropbox firefox google-chrome google-earth gog-galaxy grandperspective hazel hipchat kaleidoscope maciasl minecraft moneydance moom mumble omnigraffle origin plex-media-server slack spotify skype steam sublime-text teamspeak-client things transmission virtualbox)
+CASK_APPS=(0xed 1password alfred backblaze backblaze-downloader battle-net calibre controllermate doxie dropbox firefox google-chrome google-earth gog-galaxy grandperspective hazel hipchat iterm2-beta kaleidoscope maciasl minecraft moneydance moom mumble omnigraffle origin plex-media-server slack spotify skype steam sublime-text3 teamspeak-client things transmission virtualbox)
 POST_CASK_INSTALLERS=('/opt/homebrew-cask/Caskroom/backblaze/latest/Backblaze Installer.app' '/opt/homebrew-cask/Caskroom/battle-net/latest/Battle.net-Setup-enUS.app')
 
 # We can't install IntelliJ IDEA via brew cask yet, as it doesn't include the bundled JDK
@@ -40,6 +40,7 @@ brew update
 
 brew install caskroom/cask/brew-cask
 brew update
+brew tap caskroom/versions
 
 brew cask install --appdir=/Applications --prefpanedir=/Library/PreferencePanes dropbox
 
