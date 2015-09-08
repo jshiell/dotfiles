@@ -4,11 +4,16 @@ set hidden
 
 set background=dark
 colorscheme solarized
-set gfn=Monaco:h12
+set gfn=Inconsolata\ for\ Powerline:h12
+set fillchars+=stl:\ ,stlnc:\
+set encoding=utf-8
+set term=xterm-256color
+set termencoding=utf-8
 
 set hlsearch
 set number
 set list
+set laststatus=2
 
 set tabstop=4
 set shiftwidth=4
@@ -41,3 +46,7 @@ vmap <D-]> >gv
 cnoreabbrev <expr> w!!
                 \((getcmdtype() == ':' && getcmdline() == 'w!!')
                 \?('!sudo tee % >/dev/null'):('w!!'))
+
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
