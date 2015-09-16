@@ -23,3 +23,5 @@ cf() {
 }
 
 export CF_COLOR=true
+
+alias cf='nocorrect cf'

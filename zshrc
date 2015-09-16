@@ -48,10 +48,6 @@ if [[ -n "$ZSH" ]]; then
     source "$ZSH/oh-my-zsh.sh"
 fi
 
-# Override correction thanks to dot directories
-alias knife='nocorrect knife'
-alias docker='nocorrect docker'
-
 # Fix slow Git completion
 __git_files () {
     _wanted files expl 'local files' _files
