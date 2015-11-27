@@ -172,3 +172,5 @@ sudo chflags uchg /private/var/vm/sleepimage
 
 # Disabled Gamed
 sudo defaults write /System/Library/LaunchAgents/com.apple.gamed disabled -bool true
+launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
+
