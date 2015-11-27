@@ -169,3 +169,6 @@ sudo pmset -a hibernatemode 0
 sudo rm /private/var/vm/sleepimage
 sudo touch /private/var/vm/sleepimage
 sudo chflags uchg /private/var/vm/sleepimage
+
+# Disabled Gamed
+sudo defaults write /System/Library/LaunchAgents/com.apple.gamed disabled -bool true
