@@ -37,7 +37,6 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 brew install git 
 brew update
 
-brew install caskroom/cask/brew-cask
 brew update
 brew tap caskroom/versions
 
