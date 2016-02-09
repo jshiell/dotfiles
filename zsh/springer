@@ -1,1 +1,1 @@
-alias casper-pass='PASSWORD_STORE_DIR=~/Projects/Springer/casper-pass pass'
+alias casper-pass='PASSWORD_STORE_DIR=~/Projects/SpringerNature/casper-pass pass'
