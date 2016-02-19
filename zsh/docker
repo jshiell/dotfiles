@@ -1,7 +1,10 @@
-export DOCKER_CERT_PATH="/Users/jshiell/.docker/machine/machines/boot2docker-vm"
-export DOCKER_TLS_VERIFY=1
-export DOCKER_MACHINE_NAME="boot2docker-vm"
+if [[ "$(uname)" == 'Darwin' ]]; then
+	export DOCKER_CERT_PATH="/Users/jshiell/.docker/machine/machines/dev"
+	export DOCKER_TLS_VERIFY=1
+	export DOCKER_MACHINE_NAME="dev"
+
+	alias docker-up='docker-machine start dev && eval $(docker-machine env dev)'
+	alias docker-down='docker-machine stop dev'
+fi
 
 alias docker='nocorrect docker'
-alias docker-up='docker-machine start boot2docker-vm && eval $(docker-machine env boot2docker-vm)'
-alias docker-down='docker-machine stop boot2docker-vm'
