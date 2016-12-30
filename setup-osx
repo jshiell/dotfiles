@@ -9,7 +9,7 @@ if [[ -z "$COMPUTER_NAME" ]]; then
 fi
 
 BREW_APPS="htop-osx mtr iftop python terminal-notifier tmux rbenv ruby-build rbenv-bundler rbenv-bundler-ruby-version"
-CASK_APPS="0xed 1password alfred backblaze backblaze-downloader battle-net calibre doxie dropbox firefox flux google-chrome gog-galaxy grandperspective hazel intellij-idea-bundled-jdk iterm2 java kaleidoscope little-snitch moneydance moom mumble omnigraffle origin scroll-reverser slack spotify skype steam sublime-text teamspeak-client things transmission virtualbox vmware-fusion7 witch viscosity xbox360-controller-driver dnscrypt"
+CASK_APPS="0xed 1password alfred backblaze backblaze-downloader battle-net calibre doxie dropbox firefox flux google-chrome gog-galaxy grandperspective hazel intellij-idea-bundled-jdk iterm2 java kaleidoscope little-snitch moneydance moom mumble omnigraffle origin scroll-reverser slack spotify skype steam sublime-text teamspeak-client things transmission virtualbox vmware-fusion7 witch viscosity xbox360-controller-driver dnscrypt little-flocker"
 POST_CASK_INSTALLERS="'/opt/homebrew-cask/Caskroom/backblaze/latest/Backblaze Installer.app' '/opt/homebrew-cask/Caskroom/battle-net/latest/Battle.net-Setup-enUS.app'"
 
 # Hack oddities that aren't in cask - HWMonitor, DPCIManager, KextBeast
