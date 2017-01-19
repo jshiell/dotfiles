@@ -1,9 +1,11 @@
-ANTIGEN=""
-if [[ -f "$HOME/.antigen/antigen.zsh" ]]; then
-    ANTIGEN="$HOME/.antigen/antigen.zsh"
+ANTIGEN="$HOME/.antigen/antigen.zsh"
+if [[ ! -f "$ANTIGEN" ]]; then
+    if git --version >&/dev/null; then
+        git clone https://github.com/zsh-users/antigen.git "$HOME/.antigen"
+    fi
 fi
 
-if [[ -n "$ANTIGEN" ]]; then
+if [[ -f "$ANTIGEN" ]]; then
     source "$ANTIGEN"
 
     antigen use oh-my-zsh
@@ -17,4 +19,6 @@ if [[ -n "$ANTIGEN" ]]; then
     antigen theme jshiell/oh-my-zsh themes/infernus
 
     antigen apply
+else
+    echo "Unable to find/clone antigen - please install manually to activate"
 fi
