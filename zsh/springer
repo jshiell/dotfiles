@@ -1,1 +1,1 @@
-alias casper-pass='PASSWORD_STORE_DIR=~/Projects/SpringerNature/casper-pass pass'
+export VPN_USERNAME=jsl0346
