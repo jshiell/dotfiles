@@ -22,7 +22,6 @@ export PATH="$HOME/bin:$PATH"
 
 # Various bits & pieces
 . $ZSHRC_DIR/zsh/brew
-. $ZSHRC_DIR/zsh/cloudfoundry
 . $ZSHRC_DIR/zsh/docker
 . $ZSHRC_DIR/zsh/editor
 . $ZSHRC_DIR/zsh/go
