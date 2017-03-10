@@ -5,5 +5,8 @@ fi
 export HOMEBREW_TEMP=/usr/local/var/tmp
 
 export PATH="/usr/local/bin:/usr/local/sbin:/opt/X11/bin:$PATH"
+if [[ "/usr/local/opt/node@6/bin" ]]; then
+    export PATH="/usr/local/opt/node@6/bin:$PATH"
+fi
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --prefpanedir=/Library/PreferencePanes"
