@@ -24,6 +24,7 @@ export PATH="$HOME/bin:$PATH"
 . $ZSHRC_DIR/zsh/brew
 . $ZSHRC_DIR/zsh/docker
 . $ZSHRC_DIR/zsh/editor
+. $ZSHRC_DIR/zsh/gpg
 . $ZSHRC_DIR/zsh/go
 . $ZSHRC_DIR/zsh/iterm
 . $ZSHRC_DIR/zsh/java
