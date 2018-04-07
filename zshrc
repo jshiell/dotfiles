@@ -9,9 +9,7 @@ ZSHRC_DIR="$(cd "$(dirname "$SOURCE")" && pwd)"
 
 autoload zmv
 
-# . "$ZSHRC_DIR/zsh/oh-my-zsh"
 . "$ZSHRC_DIR/zsh/antigen"
-
 
 # Fix slow Git completion
 __git_files () {
