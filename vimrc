@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 syntax enable
 
 set hidden
@@ -30,8 +32,6 @@ if has("autocmd")
 
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
 endif
-
-execute pathogen#infect()
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
