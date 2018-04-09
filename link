@@ -37,6 +37,11 @@ function link { # from, to
 	fi
 }
 
+(
+    cd "$DOTFILES_DIR"
+    git submodule init && git submodule update
+)
+
 link "curlrc" ".curlrc"
 link "tmux.conf" ".tmux.conf"
 link "vim" ".vim"
