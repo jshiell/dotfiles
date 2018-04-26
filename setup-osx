@@ -9,7 +9,7 @@ if [[ "$COMPUTER_NAME" == '--help' ]]; then
 fi
 
 BREW_APPS="httpie mtr iftop python terminal-notifier tmux rbenv ruby-build rbenv-bundler rbenv-bundler-ruby-version vim"
-CASK_APPS="0xed 1password alfred battle-net calibre docker doxie dropbox firefox google-chrome grandperspective intellij-idea iterm2 java8 kaleidoscope karabiner-elements little-snitch moneydance moom omnigraffle scroll-reverser slack spotify skype steam sublime-text teamspeak-client"
+CASK_APPS="0xed 1password alfred battle-net calibre docker doxie dropbox firefox google-chrome grandperspective intellij-idea iterm2 java8 kaleidoscope karabiner-elements little-snitch moneydance moom omnigraffle scroll-reverser slack spotify skype steam sublime-text visual-studio-code"
 POST_CASK_INSTALLERS="'/opt/homebrew-cask/Caskroom/battle-net/latest/Battle.net-Setup-enUS.app'"
 
 # Hack oddities that aren't in cask - DPCIManager, KextBeast
