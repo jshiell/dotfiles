@@ -22,6 +22,7 @@ export PATH="$HOME/bin:$PATH"
 . $ZSHRC_DIR/zsh/brew
 . $ZSHRC_DIR/zsh/editor
 . $ZSHRC_DIR/zsh/gpg
+. $ZSHRC_DIR/zsh/golang
 . $ZSHRC_DIR/zsh/iterm
 . $ZSHRC_DIR/zsh/java
 . $ZSHRC_DIR/zsh/nvm
@@ -32,3 +33,6 @@ export PATH="$HOME/bin:$PATH"
 . $ZSHRC_DIR/zsh/springer
 
 . $ZSHRC_DIR/zsh/autoenv # must be last as it arses about with cd
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
