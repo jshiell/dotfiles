@@ -10,7 +10,7 @@ if [[ -f "$ANTIGEN" ]]; then
 
     antigen use oh-my-zsh
 
-    for BUNDLE in brew bundler colored-man docker docker-compose git github gradle history-substring-search knife mvn osx pass rbenv ruby sudo terminalapp tmux; do
+    for BUNDLE in brew bundler colored-man docker docker-compose git github gradle history-substring-search pass rbenv ruby terminalapp tmux; do
         antigen bundle $BUNDLE
     done
 
