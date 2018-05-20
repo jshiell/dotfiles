@@ -1,0 +1,4 @@
+readonly SANDBOXD_PATH="$HOME/.sandboxd"
+if [[ -d "$SANDBOXD_PATH" ]]; then
+    source "$SANDBOXD_PATH/sandboxd"
+fi

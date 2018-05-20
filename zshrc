@@ -19,7 +19,7 @@ __git_files () {
 export PATH="$HOME/bin:$PATH"
 
 # Various bits & pieces
-. $ZSHRC_DIR/zsh/brew
+. $ZSHRC_DIR/zsh/sandboxd
 . $ZSHRC_DIR/zsh/editor
 . $ZSHRC_DIR/zsh/gpg
 . $ZSHRC_DIR/zsh/golang

@@ -47,5 +47,6 @@ link "tmux.conf" ".tmux.conf"
 link "vim" ".vim"
 link "vimrc" ".vimrc"
 link "zshrc" ".zshrc"
+link "sandboxrc" ".sandboxrc"
 
 echo -e "${BLACK}Done${NC}"

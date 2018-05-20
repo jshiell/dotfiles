@@ -29,6 +29,7 @@ fi
 git clone git@github.com:jshiell/oh-my-zsh.git ~/.oh-my-zsh
 git clone https://github.com/zsh-users/antigen.git ~/.antigen
 git clone git@github.com:jshiell/dotfiles.git ~/dotfile
+git clone https://github.com/benvan/sandboxd.git ~/.sandboxd
 
 ~/dotfiles/link
 

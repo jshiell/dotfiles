@@ -1,12 +1,19 @@
-if [[ -f /usr/local/opt/nvm/nvm.sh ]]; then
-    export NVM_DIR="$HOME/.nvm"
+setup_nvm() {
+    if [[ -f /usr/local/opt/nvm/nvm.sh ]]; then
+        export NVM_DIR="$HOME/.nvm"
 
-    if [[ ! -d "$NVM_DIR" ]]; then
-        mkdir "$NVM_DIR"
+        if [[ ! -d "$NVM_DIR" ]]; then
+            mkdir "$NVM_DIR"
+        fi
+
+        . "/usr/local/opt/nvm/nvm.sh"
+    elif [[ -f $HOME/.nvm/nvm.sh ]]; then
+        export NVM_DIR="$HOME/.nvm"
+        . "$HOME/.nvm/nvm.sh"
     fi
+}
 
-    . "/usr/local/opt/nvm/nvm.sh"
-elif [[ -f $HOME/.nvm/nvm.sh ]]; then
-    export NVM_DIR="$HOME/.nvm"
-    . "$HOME/.nvm/nvm.sh"
+# Sandbox setup exist in ~/.sandboxrc
+if ! type sandbox_hook >/dev/null 2>&1; then
+    setup_nvm
 fi

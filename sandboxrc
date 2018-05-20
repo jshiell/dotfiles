@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+sandbox_init_nvm() {
+    setup_nvm
+}
+
+sandbox_hook nvm node
+sandbox_hook nvm nodemon
+sandbox_hook nvm npm
