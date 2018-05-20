@@ -1,13 +1,14 @@
 # Needed where /tmp and homebrew are on different volumes
 if [ -f '/usr/local/bin/brew' -a ! -d '/usr/local/var/tmp' ]; then
     mkdir -p /usr/local/var/tmp
+    export HOMEBREW_TEMP=/usr/local/var/tmp
 fi
-export HOMEBREW_TEMP=/usr/local/var/tmp
 
-export PATH="/usr/local/bin:/usr/local/sbin:/opt/X11/bin:$PATH"
-if [[ -d "/usr/local/opt/node@6/bin" ]]; then
-    export PATH="/usr/local/opt/node@6/bin:$PATH"
+if [[ -d /opt/X11/bin ]]; then
+    export PATH="/opt/X11/bin:$PATH"
 fi
+
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 if [[ -d "/usr/local/opt/imagemagick@6" ]]; then
     export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
