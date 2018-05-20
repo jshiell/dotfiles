@@ -17,7 +17,7 @@ if [[ -f "$ANTIGEN" ]]; then
     antigen bundle zsh-users/zsh-syntax-highlighting
     antigen bundle git@github.com:springernature/sn-zsh-extensions.git
 
-    antigen theme jshiell/oh-my-zsh themes/infernus
+    antigen theme jshiell/infernus-zsh-theme
 
     antigen apply
 else
