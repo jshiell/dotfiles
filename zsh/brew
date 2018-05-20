@@ -1,9 +1,3 @@
-# Needed where /tmp and homebrew are on different volumes
-if [ -f '/usr/local/bin/brew' -a ! -d '/usr/local/var/tmp' ]; then
-    mkdir -p /usr/local/var/tmp
-    export HOMEBREW_TEMP=/usr/local/var/tmp
-fi
-
 if [[ -d /opt/X11/bin ]]; then
     export PATH="/opt/X11/bin:$PATH"
 fi
