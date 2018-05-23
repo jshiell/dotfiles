@@ -28,6 +28,7 @@ export PATH="$HOME/bin:$PATH"
 . $ZSHRC_DIR/zsh/nvm
 . $ZSHRC_DIR/zsh/python
 . $ZSHRC_DIR/zsh/ruby
+. $ZSHRC_DIR/zsh/brew
 
 # Specific environments
 . $ZSHRC_DIR/zsh/springer
