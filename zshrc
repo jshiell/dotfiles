@@ -27,13 +27,10 @@ export PATH="$HOME/bin:$PATH"
 . $ZSHRC_DIR/zsh/java
 . $ZSHRC_DIR/zsh/nvm
 . $ZSHRC_DIR/zsh/python
-. $ZSHRC_DIR/zsh/ruby
 . $ZSHRC_DIR/zsh/brew
+. $ZSHRC_DIR/zsh/ruby
 
 # Specific environments
 . $ZSHRC_DIR/zsh/springer
 
 . $ZSHRC_DIR/zsh/autoenv # must be last as it arses about with cd
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
