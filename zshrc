@@ -1,3 +1,7 @@
+if [[ "$(uname -a)" =~ "Microsoft" ]]; then # see https://github.com/Microsoft/WSL/issues/1838
+    unsetopt BG_NICE
+fi
+
 SOURCE="${(%):-%N}"
 while [ -h "$SOURCE" ]; do
   DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
