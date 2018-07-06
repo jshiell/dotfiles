@@ -49,6 +49,6 @@ cnoreabbrev <expr> w!!
                 \((getcmdtype() == ':' && getcmdline() == 'w!!')
                 \?('!sudo tee % >/dev/null'):('w!!'))
 
-python3 from powerline.vim import setup as powerline_setup
+silent! python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
