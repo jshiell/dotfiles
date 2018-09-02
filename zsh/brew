@@ -12,4 +12,12 @@ if [[ -d "/usr/local/opt/imagemagick@6" ]]; then
     export MAGICK_HOME="/usr/local/opt/imagemagick@6"
 fi
 
+if bat --version >/dev/null 2>&1; then
+    alias cat=bat
+fi
+
+if prettyping --help >/dev/null 2>&1; then
+    alias ping='prettyping --nolegend'
+fi
+
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --prefpanedir=/Library/PreferencePanes"
