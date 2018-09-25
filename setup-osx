@@ -58,7 +58,7 @@ brew cleanup
 
 git config --global user.name 'Jamie Shiell'
 git config --global user.email 'jamie@infernus.org'
-git config --global user.signingkey '8A155BDBC41F95E0'
+git config --global user.signingkey '1C25BF0EE37BF38E'
 
 git config --global pull.rebase true
 git config --global commit.gpgsign true
