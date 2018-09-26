@@ -9,7 +9,7 @@ if [[ "$COMPUTER_NAME" == '--help' ]]; then
 fi
 
 BREW_APPS="bat diff-so-fancy fd httpie iftop mtr noti prettyping python rbenv rbenv-bundler rbenv-bundler-ruby-version ruby-build the_silver_searcher tldr tmux vim"
-CASK_APPS="0xed 1password alfred battle-net calibre docker doxie dropbox firefox google-chrome grandperspective intellij-idea iterm2 java8 kaleidoscope karabiner-elements little-snitch moneydance moom omnigraffle scroll-reverser slack spotify steam visual-studio-code"
+CASK_APPS="0xed 1password alfred battle-net calibre docker doxie dropbox firefox google-chrome grandperspective intellij-idea iterm2 adoptopenjdk-openjdk8 adoptopenjdk-openjdk10 kaleidoscope karabiner-elements little-snitch moneydance moom omnigraffle scroll-reverser slack spotify steam visual-studio-code"
 POST_CASK_INSTALLERS="'/opt/homebrew-cask/Caskroom/battle-net/latest/Battle.net-Setup-enUS.app'"
 
 
@@ -39,6 +39,7 @@ brew update
 
 brew update
 brew tap caskroom/versions
+brew tap AdoptOpenJDK/openjdk
 
 for APP in ${BREW_APPS}; do
     brew install "$APP"
