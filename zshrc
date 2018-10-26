@@ -33,6 +33,6 @@ __git_files () {
 }
 
 # Specific environments
-. $ZSHRC_DIR/zsh/springer
+. $ZSHRC_DIR/zsh/springernature
 
 . $ZSHRC_DIR/zsh/autoenv # must be last as it arses about with cd
