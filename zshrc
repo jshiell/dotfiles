@@ -15,6 +15,7 @@ autoload zmv
 
 export PATH="$HOME/bin:$PATH"
 
+. $ZSHRC_DIR/zsh/brew
 . $ZSHRC_DIR/zsh/sandboxd
 . $ZSHRC_DIR/zsh/editor
 . $ZSHRC_DIR/zsh/gpg
