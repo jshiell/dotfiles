@@ -1,185 +1,215 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -euo pipefail
+IFS=$'\n\t'
 
 # Initial machine setup; watch for entropy
 
-readonly COMPUTER_NAME="${1:-}"
-if [[ "$COMPUTER_NAME" == '--help' ]]; then
-	echo "Usage: $0 [computer-name]"
-	exit 1
-fi
+set_machine_name() {
+    local COMPUTER_NAME="${1:-}"
 
-POST_CASK_INSTALLERS="'/opt/homebrew-cask/Caskroom/battle-net/latest/Battle.net-Setup-enUS.app'"
+    if [[ -n "$COMPUTER_NAME" ]]; then
+        sudo scutil --set ComputerName "$COMPUTER_NAME"
+        sudo scutil --set HostName "$COMPUTER_NAME"
+        sudo scutil --set LocalHostName "$COMPUTER_NAME"
+        sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
+    fi
+}
 
+install_apps() {
+    local POST_CASK_INSTALLERS="'/opt/homebrew-cask/Caskroom/battle-net/latest/Battle.net-Setup-enUS.app'"
 
-## Machine name ############################################################
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-if [[ -n "$COMPUTER_NAME" ]]; then
-    sudo scutil --set ComputerName "$COMPUTER_NAME"
-    sudo scutil --set HostName "$COMPUTER_NAME"
-    sudo scutil --set LocalHostName "$COMPUTER_NAME"
-    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
-fi
+    brew install git 
+    brew update
+    brew bundle
 
-## Dot files ###############################################################
+    for INSTALLER in ${POST_CASK_INSTALLERS}; do
+        open $INSTALLER
+    done 
 
-git clone https://github.com/zsh-users/antigen.git ~/.antigen
-git clone git@github.com:jshiell/dotfiles.git ~/dotfile
+    brew cleanup
+}
 
-~/dotfiles/link
+link_ssh_keys() {
+    if [[ ! -d "$HOME/.ssh" && ! -h "$HOME/.ssh" ]]; then
+        if [[ -d "$HOME/Library/Mobile Documents/com~apple~CloudDocs/etc/ssh" ]]; then
+            ln -sf "$HOME/Library/Mobile Documents/com~apple~CloudDocs/etc/ssh" "$HOME/.ssh"
+            chmod 600 "$HOME/.ssh/id_rsa"
+            chmod 644 "$HOME/.ssh/authorized_keys"
+        else
+            echo "WARNING: no .ssh dir exists and iCloud docs aren't present; Git may fail" >&2
+        fi
+    fi
+}
 
-## Brew & apps #############################################################
+setup_shell_env() {
+    git clone https://github.com/zsh-users/antigen.git ~/.antigen
+    git clone git@github.com:jshiell/dotfiles.git ~/dotfile
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    "$HOME/dotfiles/link"
+}
 
-brew install git 
-brew update
-brew bundle
+setup_git() {
+    git config --global user.name 'Jamie Shiell'
+    git config --global user.email 'jamie@infernus.org'
+    git config --global user.signingkey '1C25BF0EE37BF38E'
 
-for INSTALLER in ${POST_CASK_INSTALLERS}; do
-    open $INSTALLER
-done 
+    git config --global pull.rebase true
+    git config --global commit.gpgsign true
 
-brew cleanup
+    git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+    git config --global color.diff-highlight.oldNormal    "red bold"
+    git config --global color.diff-highlight.oldHighlight "red bold 52"
+    git config --global color.diff-highlight.newNormal    "green bold"
+    git config --global color.diff-highlight.newHighlight "green bold 22"
+    git config --global color.diff.meta       "yellow"
+    git config --global color.diff.frag       "magenta bold"
+    git config --global color.diff.commit     "yellow bold"
+    git config --global color.diff.old        "red bold"
+    git config --global color.diff.new        "green bold"
+    git config --global color.diff.whitespace "red reverse"
+}
 
+setup_pip() {
+    sudo pip install powerline-status glances
 
-## Git
+    git clone https://github.com/powerline/fonts $TMPDIR/fonts
+    (
+        cd "$TMPDIR/fonts"
+        ./install.sh
+    )
+}
 
-git config --global user.name 'Jamie Shiell'
-git config --global user.email 'jamie@infernus.org'
-git config --global user.signingkey '1C25BF0EE37BF38E'
+tweak_macos() {
+    # Turn on firewall; disallow signed software from making external requests without confirmation; activate stealth mode
+    sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+    sudo defaults write /Library/Preferences/com.apple.alf allowsignedenabled -bool false
+    sudo defaults write /Library/Preferences/com.apple.alf stealthenabled -bool true
 
-git config --global pull.rebase true
-git config --global commit.gpgsign true
+    # Set standby delay to 30m
+    sudo pmset -a standbydelay 7200
 
-git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
-git config --global color.diff-highlight.oldNormal    "red bold"
-git config --global color.diff-highlight.oldHighlight "red bold 52"
-git config --global color.diff-highlight.newNormal    "green bold"
-git config --global color.diff-highlight.newHighlight "green bold 22"
-git config --global color.diff.meta       "yellow"
-git config --global color.diff.frag       "magenta bold"
-git config --global color.diff.commit     "yellow bold"
-git config --global color.diff.old        "red bold"
-git config --global color.diff.new        "green bold"
-git config --global color.diff.whitespace "red reverse"
+    # Disable boot SFX
+    sudo nvram SystemAudioVolume=" "
 
+    # Default save panel is expanded
+    defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+    defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
-## Extra toys
+    # Default to saving to disk
+    defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-sudo pip install powerline-status glances
+    # Save screenshots as PNGs
+    defaults write com.apple.screencapture type -string "png"
 
-git clone https://github.com/powerline/fonts $TMPDIR/fonts
-pushd $TMPDIR/fonts >/dev/null
-./install.sh
-popd >/dev/null
+    # Enable HiDPI modes
+    sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
+    # Check for updates daily
+    defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
-## General settings ########################################################
+    # Ask for password 10s after screensaver starts
+    defaults write com.apple.screensaver askForPassword -int 1
+    defaults write com.apple.screensaver askForPasswordDelay -int 10
 
-# Turn on firewall; disallow signed software from making external requests without confirmation; activate stealth mode
-sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
-sudo defaults write /Library/Preferences/com.apple.alf allowsignedenabled -bool false
-sudo defaults write /Library/Preferences/com.apple.alf stealthenabled -bool true
+    # Show extended host info on login (click the time)
+    sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
-# Set standby delay to 30m
-sudo pmset -a standbydelay 7200
+    # Full keyboard access
+    defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-# Disable boot SFX
-sudo nvram SystemAudioVolume=" "
+    # Search current directory by default
+    defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
-# Default save panel is expanded
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+    # Don't create bloody .DS_Store files on network drives
+    defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-# Default to saving to disk
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+    # Default to column views in Finder
+    defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
-# Save screenshots as PNGs
-defaults write com.apple.screencapture type -string "png"
+    # Allow AirDrop over ethernet
+    defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
-# Enable HiDPI modes
-sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+    # Die Dashboard, die
+    defaults write com.apple.dashboard mcx-disabled -bool true
+    defaults write com.apple.dock dashboard-in-overlay -bool true
 
-# Check for updates daily
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+    # Autohide the Dock
+    defaults write com.apple.dock autohide-delay -float 0
+    defaults write com.apple.dock autohide -bool true
 
-# Ask for password 10s after screensaver starts
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 10
+    # We're not in Kansas
+    defaults write NSGlobalDomain AppleLanguages -array "en-GB" "en"
+    defaults write NSGlobalDomain AppleLocale -string "en_GB"
+    defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+    defaults write NSGlobalDomain AppleMetricUnits -bool true
 
-# Show extended host info on login (click the time)
-sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+    # Set the timezone; see `sudo systemsetup -listtimezones` for other values
+    sudo systemsetup -settimezone "Europe/London" > /dev/null
 
-# Full keyboard access
-defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+    # Clean up launch services duplicates (Open With...)
+    /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
-# Search current directory by default
-defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+    # Don't open 'safe' files after downloading
+    defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
-# Don't create bloody .DS_Store files on network drives
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+    # Turn on developer menu/inspector
+    defaults write com.apple.Safari IncludeDevelopMenu -bool true
+    defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+    defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+    defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
-# Default to column views in Finder
-defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+    # Hide Time Machine icon
+    for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+        defaults write "${domain}" dontAutoLoad -array \
+            "/System/Library/CoreServices/Menu Extras/TimeMachine.menu"
+    done
 
-# Allow AirDrop over ethernet
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+    # Disable local TM snapshots
+    sudo tmutil disablelocal
 
-# Die Dashboard, die
-defaults write com.apple.dashboard mcx-disabled -bool true
-defaults write com.apple.dock dashboard-in-overlay -bool true
+    # Don't ask to backup new volumes
+    defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-# Autohide the Dock
-defaults write com.apple.dock autohide-delay -float 0
-defaults write com.apple.dock autohide -bool true
+    ## SSDs ####################################################################
 
-# We're not in Kansas
-defaults write NSGlobalDomain AppleLanguages -array "en-GB" "en"
-defaults write NSGlobalDomain AppleLocale -string "en_GB"
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
-defaults write NSGlobalDomain AppleMetricUnits -bool true
+    # Disable the sudden motion sensor
+    sudo pmset -a sms 0 
 
-# Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "Europe/London" > /dev/null
+    # Disable hibernation
+    sudo pmset -a hibernatemode 0
 
-# Clean up launch services duplicates (Open With...)
-/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+    # Remove the sleep image and create a read-only file in its place
+    sudo rm /private/var/vm/sleepimage
+    sudo touch /private/var/vm/sleepimage
+    sudo chflags uchg /private/var/vm/sleepimage
 
-# Don't open 'safe' files after downloading
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+    # Disabled Gamed
+    sudo defaults write /System/Library/LaunchAgents/com.apple.gamed disabled -bool true
+    launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
+}
 
-# Turn on developer menu/inspector
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+main() {
+    if [[ "$1" == '--help' ]]; then
+        echo "Usage: $0 [computer-name]"
+        exit 1
+    fi
 
-# Hide Time Machine icon
-for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-    defaults write "${domain}" dontAutoLoad -array \
-        "/System/Library/CoreServices/Menu Extras/TimeMachine.menu"
-done
+    local MACHINE_NAME="${1:-}"
 
-# Disable local TM snapshots
-sudo tmutil disablelocal
+    local BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    cd "$BASE_DIR"
 
-# Don't ask to backup new volumes
-defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+    set_machine_name "$MACHINE_NAME"
 
-## SSDs ####################################################################
+    link_ssh_keys
+    setup_shell_env
+    setup_git
+    install_apps
+    setup_pip
+    tweak_macos
+}
 
-# Disable the sudden motion sensor
-sudo pmset -a sms 0 
-
-# Disable hibernation
-sudo pmset -a hibernatemode 0
-
-# Remove the sleep image and create a read-only file in its place
-sudo rm /private/var/vm/sleepimage
-sudo touch /private/var/vm/sleepimage
-sudo chflags uchg /private/var/vm/sleepimage
-
-# Disabled Gamed
-sudo defaults write /System/Library/LaunchAgents/com.apple.gamed disabled -bool true
-launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
-
+main "$@"
