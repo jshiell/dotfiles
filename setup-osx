@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Initial machine setup; untested in whole as yet
+# Initial machine setup; watch for entropy
 
 readonly COMPUTER_NAME="${1:-}"
 if [[ "$COMPUTER_NAME" == '--help' ]]; then
@@ -8,8 +8,6 @@ if [[ "$COMPUTER_NAME" == '--help' ]]; then
 	exit 1
 fi
 
-BREW_APPS="bat diff-so-fancy fd httpie iftop mtr noti prettyping python rbenv rbenv-bundler rbenv-bundler-ruby-version ruby-build the_silver_searcher tldr tmux vim"
-CASK_APPS="0xed 1password alfred battle-net calibre docker doxie dropbox firefox google-chrome grandperspective intellij-idea iterm2 java8 java10 kaleidoscope karabiner-elements little-snitch moneydance moom omnigraffle scroll-reverser slack spotify steam visual-studio-code"
 POST_CASK_INSTALLERS="'/opt/homebrew-cask/Caskroom/battle-net/latest/Battle.net-Setup-enUS.app'"
 
 
@@ -35,18 +33,8 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 brew install git 
 brew update
+brew bundle
 
-brew update
-brew tap caskroom/versions
-brew tap AdoptOpenJDK/openjdk
-
-for APP in ${BREW_APPS}; do
-    brew install "$APP"
-done
-
-for APP in ${CASK_APPS}; do
-    brew cask install --appdir=/Applications --prefpanedir=/Library/PreferencePanes "$APP"
-done
 for INSTALLER in ${POST_CASK_INSTALLERS}; do
     open $INSTALLER
 done 
