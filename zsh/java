@@ -7,6 +7,3 @@ export PATH=$JAVA_HOME/bin:$PATH
 if [ -d '/usr/local/android-sdk-macosx' ]; then
     export ANDROID_HOME=/usr/local/android-sdk-macosx
 fi
-
-export JAVA_TOOL_OPTIONS='-Djava.awt.headless=true'
-
