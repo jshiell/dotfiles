@@ -1,0 +1,31 @@
+cf_cpu() {
+    local APP_MEMORY="$1"
+    if [[ -z "$APP_MEMORY" ]]; then
+        echo "Usage: cf_cpu <memory in mb>"
+        return 1
+    fi
+
+    local CPU_PERCENT=$(bc <<EOF
+define max(a, b) {
+    if (a > b) {
+        return (a)
+    } else {
+        return (b)
+    }
+}
+
+scale = 2
+
+min_memory = 128.0
+max_memory = 8192.0
+number_of_cpus = 2.0
+max_cpu_shares = 1024.0
+
+cpu_weight = 100.0 * max(min_memory, $APP_MEMORY) / max_memory
+cpu_shares = max_cpu_shares * cpu_weight / 100.0
+cpu_percent = number_of_cpus * 100.0 * cpu_shares / max_cpu_shares
+cpu_percent
+EOF
+)
+    echo "Reserved CPU for ${APP_MEMORY}Mb is ${CPU_PERCENT}%"
+}
