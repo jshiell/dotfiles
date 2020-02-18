@@ -24,7 +24,7 @@ export PATH="$HOME/bin:$PATH"
 typeset -U ZSH_CONFIG_FILES
 ZSH_CONFIG_FILES=($ZSHRC_DIR/zsh/*.zsh)
 
-for ZSH_CONFIG_FILE in ${ZSH_CONFIG_FILES:#*/autoenv.zsh}; do
+for ZSH_CONFIG_FILE in ${ZSH_CONFIG_FILES}; do
   source "$ZSH_CONFIG_FILE"
 done
 
@@ -32,5 +32,3 @@ done
 __git_files () {
     _wanted files expl 'local files' _files
 }
-
-source "$ZSHRC_DIR/zsh/autoenv.zsh" # must be last as it arses about with cd
