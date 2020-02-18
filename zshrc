@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 if [[ "$(uname -a)" =~ "Microsoft" ]]; then # see https://github.com/Microsoft/WSL/issues/1838
     unsetopt BG_NICE
 fi
@@ -19,26 +21,16 @@ autoload colors && colors
 
 export PATH="$HOME/bin:$PATH"
 
-source $ZSHRC_DIR/zsh/brew
-source $ZSHRC_DIR/zsh/nix
-source $ZSHRC_DIR/zsh/editor
-source $ZSHRC_DIR/zsh/gpg
-source $ZSHRC_DIR/zsh/golang
-source $ZSHRC_DIR/zsh/iterm
-source $ZSHRC_DIR/zsh/java
-source $ZSHRC_DIR/zsh/nvm
-source $ZSHRC_DIR/zsh/python
-source $ZSHRC_DIR/zsh/ruby
+typeset -U ZSH_CONFIG_FILES
+ZSH_CONFIG_FILES=($ZSHRC_DIR/zsh/*.zsh)
 
-# source "$ZSHRC_DIR/zsh/antigen"
-source "$ZSHRC_DIR/zsh/antibody"
+for ZSH_CONFIG_FILE in ${ZSH_CONFIG_FILES:#*/autoenv.zsh}; do
+  source "$ZSH_CONFIG_FILE"
+done
 
 # Fix slow Git completion
 __git_files () {
     _wanted files expl 'local files' _files
 }
 
-# Specific environments
-source $ZSHRC_DIR/zsh/springernature
-
-source $ZSHRC_DIR/zsh/autoenv # must be last as it arses about with cd
+source "$ZSHRC_DIR/zsh/autoenv.zsh" # must be last as it arses about with cd
