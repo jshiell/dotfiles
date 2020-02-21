@@ -74,9 +74,7 @@ setup_git() {
     git config --global color.diff.whitespace "red reverse"
 }
 
-setup_pip() {
-    sudo pip install powerline-status glances
-
+setup_powerline_fonts() {
     git clone https://github.com/powerline/fonts $TMPDIR/fonts
     (
         cd "$TMPDIR/fonts"
@@ -210,7 +208,7 @@ main() {
     setup_shell_env
     setup_git
     install_apps
-    setup_pip
+    setup_powerline_fonts
     tweak_macos
 }
 
