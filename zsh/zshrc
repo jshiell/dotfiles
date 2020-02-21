@@ -13,7 +13,7 @@ while [ -h "$SOURCE" ]; do
   [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
 
-ZSHRC_DIR="$(cd "$(dirname "$SOURCE")" && pwd)"
+_ZSH_CONFIG_DIR="$(cd "$(dirname "$SOURCE")" && pwd)"
 
 autoload -U compinit && compinit # completion
 autoload zmv # better mv
@@ -22,9 +22,9 @@ autoload colors && colors
 export PATH="$HOME/bin:$PATH"
 
 typeset -U ZSH_CONFIG_FILES
-ZSH_CONFIG_FILES=($ZSHRC_DIR/*.zsh)
+_ZSH_CONFIG_FILES=($_ZSH_CONFIG_DIR/*.zsh)
 
-for ZSH_CONFIG_FILE in ${ZSH_CONFIG_FILES}; do
+for ZSH_CONFIG_FILE in ${_ZSH_CONFIG_FILES}; do
   source "$ZSH_CONFIG_FILE"
 done
 
