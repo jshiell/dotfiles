@@ -45,7 +45,6 @@ link_ssh_keys() {
 }
 
 setup_shell_env() {
-    git clone https://github.com/zsh-users/antigen.git ~/.antigen
     git clone git@github.com:jshiell/dotfiles.git ~/dotfile
 
     "$HOME/dotfiles/link"

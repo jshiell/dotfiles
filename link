@@ -43,7 +43,6 @@ function link { # from, to
 )
 
 link "curlrc" ".curlrc"
-link "tmux.conf" ".tmux.conf"
 link "vim" ".vim"
 link "vim/vimrc" ".vimrc"
 link "zsh/zshrc" ".zshrc"
