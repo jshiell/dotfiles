@@ -6,8 +6,10 @@ if ! "$ANTIBODY" -v >/dev/null 2>&1; then
 
     if ! "$ANTIBODY" -v >/dev/null 2>&1; then
         if brew -v >/dev/null 2>&1; then
+            echo "Antibody not installed; installing from Brew..."
             brew install getantibody/tap/Antibody
         else
+            echo "Antibody not installed; installing from GitHub..."
             curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
         fi
     fi
