@@ -45,7 +45,7 @@ function link { # from, to
 link "curlrc" ".curlrc"
 link "tmux.conf" ".tmux.conf"
 link "vim" ".vim"
-link "vimrc" ".vimrc"
-link "zshrc" ".zshrc"
+link "vim/vimrc" ".vimrc"
+link "zsh/zshrc" ".zshrc"
 
 echo -e "${BLACK}Done${NC}"

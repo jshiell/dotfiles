@@ -2,8 +2,8 @@ if ! antibody -v >/dev/null 2>&1 && brew -v >/dev/null 2>&1; then
     brew install getantibody/tap/Antibody
 fi
 
-ANTIBODY_PLUGINS_TEXT="$ZSHRC_DIR/zsh/antibody_plugins.txt"
-ANTIBODY_PLUGINS_SH="$ZSHRC_DIR/zsh/antibody_plugins.sh"
+ANTIBODY_PLUGINS_TEXT="$ZSHRC_DIR/antibody_plugins.txt"
+ANTIBODY_PLUGINS_SH="$ZSHRC_DIR/antibody_plugins.sh"
 
 if antibody -v >/dev/null 2>&1; then
     if [[ -f "$ANTIBODY_PLUGINS_SH" && "$ANTIBODY_PLUGINS_SH" -nt "$ANTIBODY_PLUGINS_TEXT" ]]; then
