@@ -1,1 +1,0 @@
-export VPN_USERNAME=jsl0346
