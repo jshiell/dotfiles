@@ -3,12 +3,18 @@
 HISTSIZE=50000
 SAVEHIST=10000
 
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
 autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-autoload -U edit-command-line
 zle -N up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
 zle -N down-line-or-beginning-search
+autoload -U edit-command-line
 zle -N edit-command-line
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
 
 setopt extended_history # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
