@@ -3,7 +3,7 @@
 HISTSIZE=50000
 SAVEHIST=10000
 
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
 
 autoload -U up-line-or-beginning-search
 zle -N up-line-or-beginning-search
