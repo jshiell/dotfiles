@@ -5,7 +5,6 @@ robbyrussell/oh-my-zsh path:plugins/common-aliases
 robbyrussell/oh-my-zsh path:plugins/colored-man-pages
 robbyrussell/oh-my-zsh path:plugins/docker
 robbyrussell/oh-my-zsh path:plugins/git
-robbyrussell/oh-my-zsh path:plugins/gradle
 robbyrussell/oh-my-zsh path:plugins/pass
 
 zsh-users/zsh-syntax-highlighting
