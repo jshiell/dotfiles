@@ -10,7 +10,11 @@ if ! "$ANTIBODY" -v >/dev/null 2>&1; then
             brew install getantibody/tap/Antibody
         else
             echo "Antibody not installed; installing from GitHub..."
-            curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
+            if test -w /usr/local/bin; then
+                curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
+            else
+                curl -sfL git.io/antibody | sudo -p 'Please enter system password to install Antibody to /usr/local/bin:' sh -s - -b /usr/local/bin
+            fi
         fi
     fi
 fi
