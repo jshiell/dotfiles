@@ -17,7 +17,7 @@ set_machine_name() {
 }
 
 install_apps() {
-    local POST_CASK_INSTALLERS="'/opt/homebrew-cask/Caskroom/battle-net/latest/Battle.net-Setup-enUS.app'"
+    local POST_CASK_INSTALLERS="'/usr/local/Caskroom/battle-net/latest/Battle.net-Setup.app'"
 
     if ! brew --help >/dev/null 2>&1; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
