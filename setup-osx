@@ -177,7 +177,7 @@ tweak_macos() {
     done
 
     # Disable local TM snapshots
-    sudo tmutil disablelocal
+    sudo tmutil disable
 
     # Don't ask to backup new volumes
     defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
