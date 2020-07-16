@@ -202,11 +202,13 @@ main() {
         exit 1
     fi
 
-    local MACHINE_NAME="${1:-}"
-
     local BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     cd "$BASE_DIR"
 
+    local MACHINE_NAME
+    if [[ $# -gt 0 ]]; then
+        MACHINE_NAME="${1:-}"
+    fi
     if [[ -n "$MACHINE_NAME" ]]; then
         set_machine_name "$MACHINE_NAME"
     else
