@@ -197,7 +197,7 @@ tweak_macos() {
 }
 
 main() {
-    if [[ "$1" == '--help' ]]; then
+    if [[ "${1:-}" == '--help' ]]; then
         echo "Usage: $0 [computer-name]"
         exit 1
     fi
@@ -205,10 +205,7 @@ main() {
     local BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     cd "$BASE_DIR"
 
-    local MACHINE_NAME
-    if [[ $# -gt 0 ]]; then
-        MACHINE_NAME="${1:-}"
-    fi
+    local MACHINE_NAME="${1:-}"
     if [[ -n "$MACHINE_NAME" ]]; then
         set_machine_name "$MACHINE_NAME"
     else
