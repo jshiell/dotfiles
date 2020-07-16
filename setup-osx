@@ -84,11 +84,13 @@ setup_git() {
 }
 
 setup_powerline_fonts() {
+    [[ -d "$TMPDIR/fonts" ]] && rm -rf "$TMPDIR/fonts"
     git clone https://github.com/powerline/fonts $TMPDIR/fonts
     (
         cd "$TMPDIR/fonts"
         ./install.sh
     )
+    [[ -d "$TMPDIR/fonts" ]] && rm -rf "$TMPDIR/fonts"
 }
 
 tweak_macos() {
