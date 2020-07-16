@@ -17,7 +17,7 @@ set_machine_name() {
 }
 
 install_apps() {
-    local POST_CASK_INSTALLERS="'/usr/local/Caskroom/battle-net/latest/Battle.net-Setup.app'"
+    local POST_CASK_INSTALLERS="/usr/local/Caskroom/battle-net/latest/Battle.net-Setup.app"
 
     if ! brew --help >/dev/null 2>&1; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -28,7 +28,11 @@ install_apps() {
     brew bundle
 
     for INSTALLER in ${POST_CASK_INSTALLERS}; do
-        open $INSTALLER
+        if [[ -f "INSTALLER" ]]; then
+            open $INSTALLER
+        else
+            echo "WARNING: cannot find installer $INSTALLER"
+        fi
     done 
 
     brew cleanup
