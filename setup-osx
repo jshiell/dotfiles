@@ -193,7 +193,7 @@ tweak_macos() {
     sudo pmset -a hibernatemode 0
 
     # Remove the sleep image and create a read-only file in its place
-    sudo rm /private/var/vm/sleepimage
+    sudo rm -f /private/var/vm/sleepimage
     sudo touch /private/var/vm/sleepimage
     sudo chflags uchg /private/var/vm/sleepimage
 
