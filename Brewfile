@@ -64,3 +64,4 @@ mas "Pixelmator Pro", id: 1289583905
 mas "Things3", id: 904280696
 mas "Tweetbot 3", id: 1384080005
 mas "Kaleidoscope", id: 587512244
+mas "Reeder 4", id: 1449412482
