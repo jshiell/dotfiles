@@ -41,7 +41,7 @@ cask "intellij-idea"
 cask "iterm2"
 cask "java8"
 cask "adoptopenjdk11"
-cask "kaleidoscope"
+cask "adoptopenjdk14"
 cask "little-snitch"
 cask "moom"
 cask "omnigraffle"
@@ -55,4 +55,5 @@ mas "Monity", id: 915542151
 mas "Paprika Recipe Manager", id: 451907568
 mas "Pixelmator Pro", id: 1289583905
 mas "Things3", id: 904280696
-mas "Tweetbot", id: 557168941
+mas "Tweetbot 3", id: 1384080005
+mas "Kaleidoscope", id: 587512244
