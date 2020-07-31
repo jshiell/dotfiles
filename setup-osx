@@ -61,6 +61,10 @@ setup_shell_env() {
 }
 
 setup_git() {
+    mkdir -p "$HOME/.gnupg"
+    echo pinentry-program /usr/local/bin/pinentry-mac >> "$HOME/.gnupg/gpg-agent.conf"
+    echo use-agent >> "$HOME/.gnupg/gpg.conf"
+
     git config --global user.name 'Jamie Shiell'
     git config --global user.email 'jamie@infernus.org'
     git config --global user.signingkey '1C25BF0EE37BF38E'
