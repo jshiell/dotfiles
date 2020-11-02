@@ -32,7 +32,7 @@ if [[ -x '/usr/libexec/java_home' ]]; then
         export PATH="$JAVA_HOME/bin:$PATH"    
     }
 
-    _change_jdk 14
+    _change_jdk 15
 
     alias use-java='_change_jdk $1'
 fi
