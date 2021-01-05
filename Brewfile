@@ -15,6 +15,7 @@ brew "iftop"
 brew "mas"
 brew "mtr"
 brew "noti"
+brew "nvm"
 brew "pinentry-mac"
 brew "prettyping"
 brew "python"
@@ -48,7 +49,6 @@ cask "adoptopenjdk/openjdk/adoptopenjdk14"
 cask "little-snitch"
 cask "macdown"
 cask "moom"
-cask "nvm"
 cask "omnigraffle"
 cask "scroll-reverser"
 cask "signal"
@@ -60,9 +60,9 @@ cask "visual-studio-code"
 
 mas "Kindle", id: 405399194
 mas "Monity", id: 915542151
-mas "Paprika Recipe Manager", id: 451907568
+mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Pixelmator Pro", id: 1289583905
 mas "Things3", id: 904280696
 mas "Tweetbot 3", id: 1384080005
 mas "Kaleidoscope", id: 587512244
-mas "Reeder 4", id: 1449412482
+mas "Reeder 5", id: 1529448980
