@@ -7,5 +7,7 @@ fi
 if [[ -n "$NVM_HOME_DIR" ]]; then
     export NVM_DIR="$HOME/.nvm"
     [[ ! -d "$NVM_DIR" ]] && mkdir "$NVM_DIR"
+    setopt no_aliases
     . "$NVM_HOME_DIR/nvm.sh"
+    setopt aliases
 fi
