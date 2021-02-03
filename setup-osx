@@ -74,6 +74,8 @@ setup_git() {
 
     git config --global log.follow true
 
+    git config --global core.commentChar ";"
+
     git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
     git config --global color.diff-highlight.oldNormal    "red bold"
     git config --global color.diff-highlight.oldHighlight "red bold 52"
