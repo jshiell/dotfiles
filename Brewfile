@@ -26,7 +26,6 @@ brew "ruby-build"
 brew "the_silver_searcher"
 brew "tldr"
 brew "tmux"
-brew "vim"
 
 cask "1password"
 cask "aerial"
