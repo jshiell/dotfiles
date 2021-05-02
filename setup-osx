@@ -62,8 +62,20 @@ setup_shell_env() {
 
 setup_git() {
     mkdir -p "$HOME/.gnupg"
-    echo pinentry-program /usr/local/bin/pinentry-mac >> "$HOME/.gnupg/gpg-agent.conf"
-    echo use-agent >> "$HOME/.gnupg/gpg.conf"
+
+    if [[ "$(uname)" == 'Darwin' ]]; then
+        if ! grep pinentry-program "$HOME/.gnupg/gpg-agent.conf" >/dev/null 2>&1; then
+            if [[ "$(uname -p)" == 'arm' ]]; then
+                echo pinentry-program /opt/homebrew/bin/pinentry-mac >> "$HOME/.gnupg/gpg-agent.conf"
+            else
+                echo pinentry-program /usr/local/bin/pinentry-mac >> "$HOME/.gnupg/gpg-agent.conf"
+            fi
+        fi
+
+        if ! grep use-agent "$HOME/.gnupg/gpg.conf" >/dev/null 2>&1; then
+            echo use-agent >> "$HOME/.gnupg/gpg.conf"
+        fi
+    fi
 
     git config --global user.name 'Jamie Shiell'
     git config --global user.email 'jamie@infernus.org'
@@ -208,6 +220,12 @@ tweak_macos() {
     launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
 }
 
+install_os_extensions() {
+    if [[ "$(uname -p)" == 'arm' ]]; then
+        sudo softwareupdate --install-rosetta
+    fi
+}
+
 main() {
     if [[ "${1:-}" == '--help' ]]; then
         echo "Usage: $0 [computer-name]"
@@ -227,6 +245,7 @@ main() {
     link_ssh_keys
     setup_shell_env
     setup_git
+    install_os_extensions
     install_apps
     setup_powerline_fonts
     tweak_macos

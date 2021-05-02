@@ -2,6 +2,8 @@ ANTIBODY=/usr/local/bin/antibody
 if ! "$ANTIBODY" -v >/dev/null 2>&1; then
     if antibody -v  >/dev/null 2>&1; then
         ANTIBODY=antibody
+    elif /opt/homebrew/bin/antibody -v >/dev/null 2>&1; then
+        ANTIBODY=/opt/homebrew/bin/antibody
     fi
 
     if ! "$ANTIBODY" -v >/dev/null 2>&1; then
