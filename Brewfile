@@ -46,7 +46,6 @@ cask "adoptopenjdk/openjdk/adoptopenjdk8"
 cask "adoptopenjdk/openjdk/adoptopenjdk11"
 cask "adoptopenjdk/openjdk/adoptopenjdk16"
 cask "little-snitch"
-cask "macdown"
 cask "mailtrackerblocker"
 cask "moom"
 cask "omnigraffle"
@@ -59,7 +58,6 @@ cask "vanilla"
 cask "visual-studio-code"
 
 mas "Kindle", id: 405399194
-mas "Monity", id: 915542151
 mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Pixelmator Pro", id: 1289583905
 mas "Things3", id: 904280696
