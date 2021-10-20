@@ -1,5 +1,5 @@
 
-jshiell/infernus-zsh-theme
+jshiell/infernus-zsh-theme branch:main
 
 robbyrussell/oh-my-zsh path:plugins/common-aliases
 robbyrussell/oh-my-zsh path:plugins/colored-man-pages
@@ -11,5 +11,5 @@ zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-completions
 zsh-users/zsh-history-substring-search
 
-git@github.com:springernature/sn-zsh-extensions
+git@github.com:springernature/sn-zsh-extensions branch:main
 
