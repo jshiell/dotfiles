@@ -1,11 +1,13 @@
 ZNAP_HOME="$HOME/.znap"
+mkdir -p "$ZNAP_HOME"
 
-if [[ ! -d "$ZNAP_HOME" ]]; then
-    mkdir -p "$ZNAP_HOME"
-    git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git "$ZNAP_HOME"
+zstyle ':znap:*' repos-dir "$ZNAP_HOME"
+
+if [[ ! -d "$ZNAP_HOME/zsh-snap" ]]; then
+    git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git "$ZNAP_HOME/zsh-snap"
 fi
 
-source "$ZNAP_HOME/znap.zsh"
+source "$ZNAP_HOME/zsh-snap/znap.zsh"
 
 znap source ohmyzsh/ohmyzsh lib/theme-and-appearance
 znap source jshiell/infernus-zsh-theme
