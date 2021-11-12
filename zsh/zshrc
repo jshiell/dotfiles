@@ -27,8 +27,3 @@ _ZSH_CONFIG_FILES=($_ZSH_CONFIG_DIR/*.zsh)
 for ZSH_CONFIG_FILE in ${_ZSH_CONFIG_FILES}; do
   source "$ZSH_CONFIG_FILE"
 done
-
-# Fix slow Git completion
-__git_files () {
-    _wanted files expl 'local files' _files
-}
