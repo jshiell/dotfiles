@@ -26,11 +26,13 @@ setopt share_history # share command history data
 
 bindkey '^R' history-incremental-search-backward
 
-# fuzzy find: start to type
-bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
-bindkey "$terminfo[kcud1]" down-line-or-beginning-search
-bindkey "$terminfo[cuu1]" up-line-or-beginning-search
-bindkey "$terminfo[cud1]" down-line-or-beginning-search
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+    # fuzzy find: start to type
+    bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
+    bindkey "$terminfo[kcud1]" down-line-or-beginning-search
+    bindkey "$terminfo[cuu1]" up-line-or-beginning-search
+    bindkey "$terminfo[cud1]" down-line-or-beginning-search
+fi
 
 # backward and forward word with option+left/right
 bindkey '^[^[[D' backward-word
