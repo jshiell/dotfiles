@@ -2,6 +2,7 @@ lazy_load_nvm() {
     unset -f node
     unset -f npm
     unset -f nvm
+    unset -f yarn
     if [[ -f /usr/local/opt/nvm/nvm.sh ]]; then
         NVM_HOME_DIR="/usr/local/opt/nvm"
     elif [[ -f $HOME/.nvm/nvm.sh ]]; then
@@ -30,4 +31,9 @@ npm() {
 nvm() {
     lazy_load_nvm
     nvm $@
+}
+
+yarn() {
+    lazy_load_nvm
+    yarn $@
 }
