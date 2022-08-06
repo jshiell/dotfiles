@@ -134,6 +134,7 @@ tweak_macos() {
 
     # Save screenshots as PNGs
     defaults write com.apple.screencapture type -string "png"
+    defaults write com.apple.screencapture location ~/Downloads/
 
     # Enable HiDPI modes
     sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
