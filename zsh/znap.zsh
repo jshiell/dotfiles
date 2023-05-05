@@ -1,10 +1,11 @@
+ZNAP_RELEASE='22.06.22'
 ZNAP_HOME="$HOME/.znap"
 mkdir -p "$ZNAP_HOME"
 
 zstyle ':znap:*' repos-dir "$ZNAP_HOME"
 
 if [[ ! -d "$ZNAP_HOME/zsh-snap" ]]; then
-    git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git "$ZNAP_HOME/zsh-snap"
+    git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git --branch "$ZNAP_RELEASE" "$ZNAP_HOME/zsh-snap"
 fi
 
 source "$ZNAP_HOME/zsh-snap/znap.zsh"
