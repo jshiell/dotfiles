@@ -21,7 +21,6 @@ if [[ -x '/usr/libexec/java_home' ]]; then
         local JAVA_VERSION_HOME
         JAVA_VERSION_HOME=$(/usr/libexec/java_home -v $JDK_VERSION)
         if [[ $? -ne 0 ]]; then
-            echo "Couldn't find JDK for version $JDK_VERSION"
             return 1
         fi
 
