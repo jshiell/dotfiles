@@ -19,4 +19,6 @@ znap source zsh-users/zsh-syntax-highlighting
 znap source zsh-users/zsh-completions
 znap source zsh-users/zsh-history-substring-search
 
-znap source git@github.com:springernature/sn-zsh-extensions
+if profiles help >/dev/null 2>&1 && profiles show | grep SpringerNature >/dev/null 2>&1; then
+    znap source git@github.com:springernature/sn-zsh-extensions
+fi
