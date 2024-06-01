@@ -10,7 +10,7 @@ fi
 
 source "$ZNAP_HOME/zsh-snap/znap.zsh"
 
-znap source ohmyzsh/ohmyzsh lib/theme-and-appearance
+znap source ohmyzsh/ohmyzsh lib/theme-and-appearance lib/functions lib/termsupport
 znap source jshiell/infernus-zsh-theme
 
 znap source ohmyzsh/ohmyzsh plugins/{common-aliases,colored-man-pages,git}
