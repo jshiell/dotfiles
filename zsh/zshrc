@@ -15,7 +15,7 @@ done
 
 _ZSH_CONFIG_DIR="$(cd "$(dirname "$SOURCE")" && pwd)"
 
-zstyle ':znap:*:<glob pattern>' git-maintenance off
+zstyle ':znap:*:*' git-maintenance off
 
 autoload -U compinit && compinit # completion
 autoload zmv # better mv
