@@ -1,8 +1,3 @@
-# ln -sf ~/dotfiles/alacritty ~/.config/alacritty
-
-import = [
-    "~/.config/alacritty/themes/solarized_dark.toml"
-]
 
 [window]
 dimensions = { columns = 120, lines = 40 }
@@ -25,3 +20,10 @@ hyperlinks = true
 command = "open"
 post_processing = true
 mouse = { enabled = true, mods = "Command" }
+
+[general]
+# ln -sf ~/dotfiles/alacritty ~/.config/alacritty
+
+import = [
+    "~/.config/alacritty/themes/solarized_dark.toml"
+]
