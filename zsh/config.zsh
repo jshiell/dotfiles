@@ -29,12 +29,12 @@ setopt share_history # share command history data
 
 bindkey '^R' history-incremental-search-backward
 
-if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+if [[ "$TERM_PROGRAM" != "WarpTerminal" && "$TERM_PROGRAM" != "ghostty" ]]; then
     # fuzzy find: start to type
-    bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
-    bindkey "$terminfo[kcud1]" down-line-or-beginning-search
-    bindkey "$terminfo[cuu1]" up-line-or-beginning-search
-    bindkey "$terminfo[cud1]" down-line-or-beginning-search
+    [[ -n "$terminfo[kcuu1]" ]] && bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
+    [[ -n "$terminfo[kcud1]" ]] && bindkey "$terminfo[kcud1]" down-line-or-beginning-search
+    [[ -n "$terminfo[cuu1]" ]] && bindkey "$terminfo[cuu1]" up-line-or-beginning-search
+    [[ -n "$terminfo[cud1]" ]] && bindkey "$terminfo[cud1]" down-line-or-beginning-search
 fi
 
 # backward and forward word with option+left/right
@@ -44,9 +44,9 @@ bindkey '^[^[[C' forward-word
 bindkey '^[f' forward-word
 
 # to to the beggining/end of line with fn+left/right or home/end
-bindkey "${terminfo[khome]}" beginning-of-line
+[[ -n "$terminfo[khome]" ]] && bindkey "${terminfo[khome]}" beginning-of-line
 bindkey '^[[H' beginning-of-line
-bindkey "${terminfo[kend]}" end-of-line
+[[ -n "$terminfo[kend]" ]] && bindkey "${terminfo[kend]}" end-of-line
 bindkey '^[[F' end-of-line
 
 # delete char with backspaces and delete
