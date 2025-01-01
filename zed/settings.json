@@ -11,8 +11,8 @@
   "buffer_font_size": 13,
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark"
+    "light": "Solarized Light",
+    "dark": "Solarized Dark"
   },
   "autosave": "on_focus_change"
 }
