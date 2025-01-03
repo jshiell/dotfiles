@@ -3,6 +3,7 @@ ZNAP_HOME="$HOME/.znap"
 mkdir -p "$ZNAP_HOME"
 
 zstyle ':znap:*' repos-dir "$ZNAP_HOME"
+zstyle ':znap:*:*' git-maintenance off
 zstyle ':znap:clone:*' default-server "git@github.com:"
 
 if [[ ! -d "$ZNAP_HOME/zsh-snap" ]]; then
