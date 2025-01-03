@@ -6,7 +6,7 @@ set hidden
 
 set background=dark
 colorscheme solarized
-set gfn=Inconsolata\ for\ Powerline:h12
+set gfn=MonaSpice\ Ar\ NFM:h12
 set fillchars+=stl:\ ,stlnc:\
 set encoding=utf-8
 set term=xterm-256color

@@ -4,7 +4,7 @@ dimensions = { columns = 120, lines = 40 }
 option_as_alt = "None"
 
 [font]
-normal = { family = "Inconsolata-g for Powerline" }
+normal = { family = ""MonaSpice Ar NFM" }
 size = 12
 
 [keyboard]
