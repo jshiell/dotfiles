@@ -1,4 +1,4 @@
-ZNAP_RELEASE='22.06.22'
+ZNAP_RELEASE='main'
 ZNAP_HOME="$HOME/.znap"
 mkdir -p "$ZNAP_HOME"
 
