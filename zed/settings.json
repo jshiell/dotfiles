@@ -7,13 +7,21 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "assistant": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "version": "2"
+  },
   "ui_font_size": 15,
   "buffer_font_size": 13,
   "buffer_font_family": "MonaSpice Ar NFM",
   "theme": {
     "mode": "system",
-    "light": "Solarized Light",
-    "dark": "Solarized Dark"
+    "light": "NeoSolarized Light",
+    "dark": "NeoSolarized Dark"
   },
-  "autosave": "on_focus_change"
+  "autosave": "on_focus_change",
+  "remove_trailing_whitespace_on_save": false
 }
