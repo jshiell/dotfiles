@@ -4,4 +4,4 @@ font-family = "MonaSpice Ar NFM"
 theme = "Builtin Solarized Dark"
 
 keybind = global:cmd+`=toggle_quick_terminal
-
+quick-terminal-size = 50%,50%
