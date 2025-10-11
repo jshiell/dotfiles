@@ -3,3 +3,4 @@
 /Brewfile.lock.json
 .DS_Store
 /zed/prompts/
+/zed/conversations/
