@@ -5,6 +5,7 @@ syntax enable
 set hidden
 
 set background=dark
+let g:solarized_termtrans=1
 colorscheme solarized
 set gfn=MonaSpice\ Ar\ NFM:h12
 set fillchars+=stl:\ ,stlnc:\
