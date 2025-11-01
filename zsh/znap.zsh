@@ -24,6 +24,6 @@ znap source zsh-users/zsh-syntax-highlighting
 znap source zsh-users/zsh-history-substring-search
 znap source zsh-users/zsh-completions
 
-if profiles help >/dev/null 2>&1 && profiles show | grep SpringerNature >/dev/null 2>&1; then
+if [[ -f /opt/foil/breathe.txt ]]; then
     znap source springernature/sn-zsh-extensions
 fi
