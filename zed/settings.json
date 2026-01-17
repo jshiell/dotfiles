@@ -10,7 +10,7 @@
   "agent": {
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4o",
+      "model": "claude-sonnet-4.5",
     },
   },
   "ui_font_size": 15,
