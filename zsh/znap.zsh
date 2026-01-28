@@ -21,7 +21,6 @@ fi
 znap source ohmyzsh/ohmyzsh plugins/{common-aliases,colored-man-pages,git}
 
 znap source zsh-users/zsh-syntax-highlighting
-znap source zsh-users/zsh-history-substring-search
 znap source zsh-users/zsh-completions
 
 znap source joshskidmore/zsh-fzf-history-search
