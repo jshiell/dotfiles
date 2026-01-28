@@ -24,6 +24,4 @@ znap source zsh-users/zsh-syntax-highlighting
 znap source zsh-users/zsh-history-substring-search
 znap source zsh-users/zsh-completions
 
-if [[ -f /opt/foil/breathe.txt ]]; then
-    znap source springernature/sn-zsh-extensions
-fi
+znap source joshskidmore/zsh-fzf-history-search
