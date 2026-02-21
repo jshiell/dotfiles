@@ -12,7 +12,7 @@ fi
 
 source "$ZNAP_HOME/zsh-snap/znap.zsh"
 
-znap source ohmyzsh/ohmyzsh lib/theme-and-appearance lib/functions lib/termsupport
+znap source ohmyzsh/ohmyzsh lib/functions lib/termsupport
 
 if ! starship --version >/dev/null 2>&1; then
     znap source jshiell/infernus-zsh-theme
