@@ -8,7 +8,15 @@ For a new Mac, try [the bootstrap](https://github.com/jshiell/mac-bootstrap).
 
 ### Bootstrap
 
-There is no install script in this repo. Symlinking is handled by the separate [mac-bootstrap](https://github.com/jshiell/mac-bootstrap) Ansible project, which clones this repo to `~/dotfiles` and creates the relevant symlinks into `~/.config` and `~/`.
+Symlinking is handled either by the `Makefile` in this repo or by the separate [mac-bootstrap](https://github.com/jshiell/mac-bootstrap) Ansible project.
+
+```
+git clone git@github.com:jshiell/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+make install
+```
+
+`make status` shows the current state of all managed symlinks. `make uninstall` removes them.
 
 ### Shell (Zsh)
 
