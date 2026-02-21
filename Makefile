@@ -8,6 +8,7 @@ HOME_LINKS := \
 
 CONFIG_LINKS := \
 	$(HOME)/.config/ghostty \
+	$(HOME)/.config/helix \
 	$(HOME)/.config/starship.toml \
 	$(HOME)/.config/zed
 
@@ -65,6 +66,9 @@ $(HOME)/.config:
 
 $(HOME)/.config/ghostty: | $(HOME)/.config
 	ln -s $(DOTFILES)/ghostty $@
+
+$(HOME)/.config/helix: | $(HOME)/.config
+	ln -s $(DOTFILES)/helix $@
 
 $(HOME)/.config/starship.toml: | $(HOME)/.config
 	ln -s $(DOTFILES)/starship.toml $@

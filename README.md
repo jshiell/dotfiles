@@ -46,6 +46,10 @@ Configured via `starship.toml` using the `gruvbox_dark` preset. Starship is init
 - `vim-airline` + `vim-airline-themes` — status bar
 - `command-t` — fuzzy file finder
 
+### Helix
+
+`~/.config/helix` symlinks to `helix/`. Uses the `solarized_dark` theme.
+
 ### Zed
 
 `~/.config/zed` symlinks to `zed/`. Settings use the NeoSolarized theme (system-adaptive light/dark) with Monaspace Neon NF as the buffer font.

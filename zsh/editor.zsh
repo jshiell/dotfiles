@@ -1,8 +1,10 @@
-if which vim >/dev/null 2>&1; then
+if which hx &>/dev/null; then
+    export EDITOR='hx'
+elif which vim &>/dev/null; then
 	export EDITOR='vim'
-elif which vi >/dev/null 2>&1; then
+elif which vi &>/dev/null; then
 	echo "Warning: no vim, falling back to vi"
 	export EDITOR='vi'
 else
-	echo "Warning: can't find vim or vi, where on earth are you?"
+	echo "Warning: can't find hx, vim, or vi: where on earth are you?"
 fi
