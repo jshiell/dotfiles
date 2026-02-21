@@ -1,7 +1,7 @@
 ## History file configuration
 [[ -z "$HISTFILE" ]] && HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
-SAVEHIST=10000
+SAVEHIST=50000
 
 [[ "$(uname)" == "Darwin" ]] && setopt no_case_glob
 
