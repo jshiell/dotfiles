@@ -10,7 +10,6 @@ colorscheme solarized
 set gfn=Monaspace\ Neon\ NF:h12
 set fillchars+=stl:\ ,stlnc:\
 set encoding=utf-8
-set term=xterm-256color
 set termencoding=utf-8
 
 set hlsearch
