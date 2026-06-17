@@ -1,7 +1,10 @@
 font-family = ""
 font-family = "Monaspace Neon NF"
 
-theme = "Builtin Solarized Dark"
+theme = "Solarized Dark Patched"
 
 keybind = global:cmd+`=toggle_quick_terminal
 quick-terminal-size = 50%,50%
+
+window-height = 50
+window-width = 120
