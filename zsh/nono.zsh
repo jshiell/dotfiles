@@ -20,7 +20,7 @@ opencode() {
 }
 
 claude() {
-    NONO_CLAUDE_PROFILE=${NONO_CLAUDE_PROFILE:-always-further/claude}
+    NONO_CLAUDE_PROFILE=${NONO_CLAUDE_PROFILE:-claude-code-local}
 
     if ! command claude --version &>/dev/null; then
         echo "claude is not installed" >&2

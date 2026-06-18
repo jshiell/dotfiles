@@ -1,0 +1,11 @@
+{
+  "meta": {
+    "name": "claude-code-local",
+    "description": "Claude Code with Java/Gradle development support",
+    "author": "Jamie Shiell"
+  },
+  "extends": "claude-code",
+  "groups": {
+    "include": ["java_runtime"]
+  }
+}
