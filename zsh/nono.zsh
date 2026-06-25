@@ -33,6 +33,7 @@ claude() {
             --allow-cwd \
             --allow "$HOME/.local/share/mise" \
             --allow "$HOME/.agents/skills" \
+            --allow "$HOME/.gradle" \
             -- claude "$@"
     else
         echo "WARNING: nono is not available, running claude without sandbox"

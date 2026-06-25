@@ -7,5 +7,10 @@
   "extends": "claude-code",
   "groups": {
     "include": ["java_runtime"]
+  },
+  "filesystem": {
+    "allow": [
+      " ~/.config/gh/"
+    ]
   }
 }
