@@ -10,7 +10,13 @@
   },
   "filesystem": {
     "allow": [
-      " ~/.config/gh/"
+      "$HOME/.config/gh",
+      "$HOME/.local/share/mise",
+      "$HOME/.agents/skills",
+      "$HOME/.gradle",
+      "$HOME/.m2",
+      "$HOME/dotfiles/agents",
+      "/Volumes"
     ]
   }
 }

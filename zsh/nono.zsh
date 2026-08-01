@@ -31,9 +31,6 @@ claude() {
     if nono --version &>/dev/null; then
         nono run --profile "$NONO_CLAUDE_PROFILE" \
             --allow-cwd \
-            --allow "$HOME/.local/share/mise" \
-            --allow "$HOME/.agents/skills" \
-            --allow "$HOME/.gradle" \
             -- claude "$@"
     else
         echo "WARNING: nono is not available, running claude without sandbox"
