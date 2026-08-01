@@ -1,1 +1,33 @@
 theme = "solarized_dark"
+
+[editor]
+cursorline = true
+bufferline = "always"
+color-modes = true
+end-of-line-diagnostics = "hint"
+rulers = [120]
+scrolloff = 10
+true-color = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+character = "╎"
+render = true
+
+[editor.inline-diagnostics]
+cursor-line = "error"
+other-lines = "disable"
+
+[editor.lsp]
+display-messages = true
+
+[editor.soft-wrap]
+enable = true
+
+[editor.statusline]
+left = ["mode", "spacer", "version-control", "diagnostics", "workspace-diagnostics", "spinner"]
+right = ["file-name", "spacer", "position-percentage", "spacer"]
