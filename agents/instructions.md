@@ -33,3 +33,8 @@
 - When in doubt between two tiers, take the cheaper one; escalate only if it fails.
 - Delegate anything expected to produce large intermediate output, even if it could be done inline.
 - Keep inline: small targeted edits, judgment-heavy work that depends on context, anything with commit authority.
+
+## Tooling
+- Runtimes: `mise`
+- Python: `uv`
+- Java/Kotlin: `gradle`
