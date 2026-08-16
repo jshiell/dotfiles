@@ -1,0 +1,30 @@
+[user]
+	name = Jamie Shiell
+	email = jamie@infernus.org
+  	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKs6F0L2RzwOb5CpHOd6hXga7FmG2x0Y7d6nqknA5cPV
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[commit]
+	gpgsign = True
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
+[log]
+	follow = true
+[core]
+	commentChar = ";"
+	pager = delta
+[push]
+	autoSetupRemote = true
+[interactive]
+	diffFilter = delta --color-only
+[diff]
+	colorMoved = default
+[mergetool]
+	conflictstyle = diff3
+[delta]
+	navigate = true
+	side-by-side = true

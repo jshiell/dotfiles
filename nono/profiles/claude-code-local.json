@@ -9,6 +9,9 @@
     "include": ["java_runtime"]
   },
   "filesystem": {
+    "allow_file": [
+      "$HOME/dotfiles/gitconfig"
+    ],
     "allow": [
       "$HOME/.config/gh",
       "$HOME/.local/share/mise",
