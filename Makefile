@@ -1,24 +1,25 @@
 DOTFILES := $(shell pwd)
 
-HOME_LINKS := \
+LINKS := \
 	$(HOME)/.curlrc \
 	$(HOME)/.vim \
 	$(HOME)/.vimrc \
-	$(HOME)/.zshrc
-
-CONFIG_LINKS := \
+	$(HOME)/.zshrc \
+	$(HOME)/.claude/CLAUDE.md \
 	$(HOME)/.config/ghostty \
 	$(HOME)/.config/helix \
 	$(HOME)/.config/starship.toml \
-	$(HOME)/.config/zed
-
+	$(HOME)/.config/zed \
+	$(HOME)/.config/opencode/instructions.md \
+	$(HOME)/.config/nono/profiles
+	
 .PHONY: install
-install: $(HOME_LINKS) $(CONFIG_LINKS) ## Symlink all dotfiles into place
+install: $(LINKS) ## Symlink all dotfiles into place
 	@echo "Done."
 
 .PHONY: uninstall
 uninstall: ## Remove all managed symlinks
-	@for link in $(HOME_LINKS) $(CONFIG_LINKS); do \
+	@for link in $(LINKS); do \
 		if [ -L "$$link" ]; then \
 			echo "Removing $$link"; \
 			rm "$$link"; \
@@ -28,7 +29,7 @@ uninstall: ## Remove all managed symlinks
 
 .PHONY: status
 status: ## Show the state of each managed symlink
-	@for link in $(HOME_LINKS) $(CONFIG_LINKS); do \
+	@for link in $(LINKS); do \
 		if [ -L "$$link" ]; then \
 			echo "  ok  $$link -> $$(readlink $$link)"; \
 		elif [ -e "$$link" ]; then \
@@ -45,7 +46,7 @@ help: ## Show this help
 
 .DEFAULT_GOAL := help
 
-# --- Home directory links ---
+# --- Links ---
 
 $(HOME)/.curlrc:
 	ln -s $(DOTFILES)/curlrc $@
@@ -58,8 +59,6 @@ $(HOME)/.vimrc:
 
 $(HOME)/.zshrc:
 	ln -s $(DOTFILES)/zsh/zshrc $@
-
-# --- ~/.config links ---
 
 $(HOME)/.config:
 	mkdir -p $@
@@ -75,3 +74,21 @@ $(HOME)/.config/starship.toml: | $(HOME)/.config
 
 $(HOME)/.config/zed: | $(HOME)/.config
 	ln -s $(DOTFILES)/zed $@
+
+$(HOME)/.config/nono:
+	mkdir -p $@
+
+$(HOME)/.config/nono/profiles: | $(HOME)/.config/nono
+	ln -s $(DOTFILES)/nono/profiles $@
+
+$(HOME)/.config/opencode:
+	mkdir -p $@
+
+$(HOME)/.config/opencode/instructions.md: | $(HOME)/.config/opencode
+	ln -s $(DOTFILES)/agents/instructions.md $@
+
+$(HOME)/.claude:
+	mkdir -p $@
+
+$(HOME)/.claude/CLAUDE.md: | $(HOME)/.claude
+	ln -s $(DOTFILES)/agents/instructions.md $@
