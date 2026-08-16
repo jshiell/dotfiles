@@ -2,6 +2,7 @@ DOTFILES := $(shell pwd)
 
 LINKS := \
 	$(HOME)/.curlrc \
+	$(HOME)/.gitconfig \
 	$(HOME)/.vim \
 	$(HOME)/.vimrc \
 	$(HOME)/.zshrc \
@@ -51,6 +52,9 @@ help: ## Show this help
 $(HOME)/.curlrc:
 	ln -s $(DOTFILES)/curlrc $@
 
+$(HOME)/.gitconfig:
+	ln -s $(DOTFILES)/gitconfig $@
+	
 $(HOME)/.vim:
 	ln -s $(DOTFILES)/vim $@
 
