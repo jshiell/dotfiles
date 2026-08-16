@@ -50,49 +50,49 @@ help: ## Show this help
 # --- Links ---
 
 $(HOME)/.curlrc:
-	ln -s $(DOTFILES)/curlrc $@
+	ln -sfn $(DOTFILES)/curlrc $@
 
 $(HOME)/.gitconfig:
-	ln -s $(DOTFILES)/gitconfig $@
+	ln -sfn $(DOTFILES)/gitconfig $@
 	
 $(HOME)/.vim:
-	ln -s $(DOTFILES)/vim $@
+	ln -sfn $(DOTFILES)/vim $@
 
 $(HOME)/.vimrc:
-	ln -s $(DOTFILES)/vim/vimrc $@
+	ln -sfn $(DOTFILES)/vim/vimrc $@
 
 $(HOME)/.zshrc:
-	ln -s $(DOTFILES)/zsh/zshrc $@
+	ln -sfn $(DOTFILES)/zsh/zshrc $@
 
 $(HOME)/.config:
 	mkdir -p $@
 
 $(HOME)/.config/ghostty: | $(HOME)/.config
-	ln -s $(DOTFILES)/ghostty $@
+	ln -sfn $(DOTFILES)/ghostty $@
 
 $(HOME)/.config/helix: | $(HOME)/.config
-	ln -s $(DOTFILES)/helix $@
+	ln -sfn $(DOTFILES)/helix $@
 
 $(HOME)/.config/starship.toml: | $(HOME)/.config
-	ln -s $(DOTFILES)/starship.toml $@
+	ln -sfn $(DOTFILES)/starship.toml $@
 
 $(HOME)/.config/zed: | $(HOME)/.config
-	ln -s $(DOTFILES)/zed $@
+	ln -sfn $(DOTFILES)/zed $@
 
 $(HOME)/.config/nono:
 	mkdir -p $@
 
 $(HOME)/.config/nono/profiles: | $(HOME)/.config/nono
-	ln -s $(DOTFILES)/nono/profiles $@
+	ln -sfn $(DOTFILES)/nono/profiles $@
 
 $(HOME)/.config/opencode:
 	mkdir -p $@
 
 $(HOME)/.config/opencode/instructions.md: | $(HOME)/.config/opencode
-	ln -s $(DOTFILES)/agents/instructions.md $@
+	ln -sfn $(DOTFILES)/agents/instructions.md $@
 
 $(HOME)/.claude:
 	mkdir -p $@
 
 $(HOME)/.claude/CLAUDE.md: | $(HOME)/.claude
-	ln -s $(DOTFILES)/agents/instructions.md $@
+	ln -sfn $(DOTFILES)/agents/instructions.md $@
