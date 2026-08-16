@@ -31,8 +31,10 @@ uninstall: ## Remove all managed symlinks
 .PHONY: status
 status: ## Show the state of each managed symlink
 	@for link in $(LINKS); do \
-		if [ -L "$$link" ]; then \
+		if [ -L "$$link" ] && [ -e "$$link" ]; then \
 			echo "  ok  $$link -> $$(readlink $$link)"; \
+		elif [ -L "$$link" ]; then \
+			echo "dead  $$link -> $$(readlink $$link) (target missing)"; \
 		elif [ -e "$$link" ]; then \
 			echo " err  $$link (exists but is not a symlink)"; \
 		else \
