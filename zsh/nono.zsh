@@ -1,5 +1,5 @@
 opencode() {
-    NONO_OPENCODE_PROFILE=${NONO_OPENCODE_PROFILE:-always-further/opencode}
+    NONO_OPENCODE_PROFILE=${NONO_OPENCODE_PROFILE:-nolabs-ai/opencode}
 
     if ! command opencode --version &>/dev/null; then
         echo "opencode is not installed" >&2

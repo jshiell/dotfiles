@@ -4,7 +4,7 @@
     "description": "Claude Code with Java/Gradle development support",
     "author": "Jamie Shiell"
   },
-  "extends": "claude-code",
+  "extends": "nolabs-ai/claude",
   "groups": {
     "include": ["java_runtime"]
   },
