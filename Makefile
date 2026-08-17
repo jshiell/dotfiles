@@ -3,6 +3,13 @@ DOTFILES := $(shell pwd)
 NONO_PROFILE_DIR := $(HOME)/.config/nono/profiles
 NONO_PROFILES := $(notdir $(wildcard $(DOTFILES)/nono/profiles/*))
 
+CLAUDE_AGENT_DIR := $(HOME)/.claude/agents
+CLAUDE_AGENTS := $(notdir $(wildcard $(DOTFILES)/agents/agents/*))
+
+CLAUDE_SKILL_DIR := $(HOME)/.claude/skills
+AGENTS_SKILL_DIR := $(HOME)/.agents/skills
+SKILLS := $(notdir $(wildcard $(DOTFILES)/agents/skills/*))
+
 LINKS := \
 	$(HOME)/.curlrc \
 	$(HOME)/.gitconfig \
@@ -15,7 +22,10 @@ LINKS := \
 	$(HOME)/.config/starship.toml \
 	$(HOME)/.config/zed \
 	$(HOME)/.config/opencode/instructions.md \
-	$(addprefix $(NONO_PROFILE_DIR)/,$(NONO_PROFILES))
+	$(addprefix $(NONO_PROFILE_DIR)/,$(NONO_PROFILES)) \
+	$(addprefix $(CLAUDE_AGENT_DIR)/,$(CLAUDE_AGENTS)) \
+	$(addprefix $(CLAUDE_SKILL_DIR)/,$(SKILLS)) \
+	$(addprefix $(AGENTS_SKILL_DIR)/,$(SKILLS))
 
 .PHONY: install
 install: $(LINKS) ## Symlink all dotfiles into place
@@ -101,3 +111,21 @@ $(HOME)/.claude:
 
 $(HOME)/.claude/CLAUDE.md: | $(HOME)/.claude
 	ln -sfn $(DOTFILES)/agents/instructions.md $@
+
+$(CLAUDE_AGENT_DIR):
+	mkdir -p $@
+
+$(CLAUDE_AGENT_DIR)/%: | $(CLAUDE_AGENT_DIR)
+	ln -sfn $(DOTFILES)/agents/agents/$* $@
+
+$(CLAUDE_SKILL_DIR):
+	mkdir -p $@
+
+$(CLAUDE_SKILL_DIR)/%: | $(CLAUDE_SKILL_DIR)
+	ln -sfn $(DOTFILES)/agents/skills/$* $@
+
+$(AGENTS_SKILL_DIR):
+	mkdir -p $@
+
+$(AGENTS_SKILL_DIR)/%: | $(AGENTS_SKILL_DIR)
+	ln -sfn $(DOTFILES)/agents/skills/$* $@
