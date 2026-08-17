@@ -1,5 +1,8 @@
 DOTFILES := $(shell pwd)
 
+NONO_PROFILE_DIR := $(HOME)/.config/nono/profiles
+NONO_PROFILES := $(notdir $(wildcard $(DOTFILES)/nono/profiles/*))
+
 LINKS := \
 	$(HOME)/.curlrc \
 	$(HOME)/.gitconfig \
@@ -12,8 +15,8 @@ LINKS := \
 	$(HOME)/.config/starship.toml \
 	$(HOME)/.config/zed \
 	$(HOME)/.config/opencode/instructions.md \
-	$(HOME)/.config/nono/profiles
-	
+	$(addprefix $(NONO_PROFILE_DIR)/,$(NONO_PROFILES))
+
 .PHONY: install
 install: $(LINKS) ## Symlink all dotfiles into place
 	@echo "Done."
@@ -81,11 +84,11 @@ $(HOME)/.config/starship.toml: | $(HOME)/.config
 $(HOME)/.config/zed: | $(HOME)/.config
 	ln -sfn $(DOTFILES)/zed $@
 
-$(HOME)/.config/nono:
+$(NONO_PROFILE_DIR):
 	mkdir -p $@
 
-$(HOME)/.config/nono/profiles: | $(HOME)/.config/nono
-	ln -sfn $(DOTFILES)/nono/profiles $@
+$(NONO_PROFILE_DIR)/%: | $(NONO_PROFILE_DIR)
+	ln -sfn $(DOTFILES)/nono/profiles/$* $@
 
 $(HOME)/.config/opencode:
 	mkdir -p $@
