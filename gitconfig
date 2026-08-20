@@ -3,9 +3,10 @@
 	email = jamie@infernus.org
   	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKs6F0L2RzwOb5CpHOd6hXga7FmG2x0Y7d6nqknA5cPV
 [gpg]
-  format = ssh
+	format = ssh
 [gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	allowedSignersFile = /Users/jsh/.ssh/allowed_signers
 [commit]
 	gpgsign = True
 [pull]
