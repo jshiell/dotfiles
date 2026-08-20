@@ -17,6 +17,9 @@
 3. Implement one increment at a time; commit after each green test.
 4. Run the `verify` skill before declaring work done. No large diffs.
 
+## Claims and Verification
+- Never assert that a platform API, config option, or behavior works a certain way without verifying it first (decompile the jar, read the source, or run a spike). If verification isn't possible, label the statement explicitly as an unverified assumption.
+
 ## Commits
 - Atomic, meaningful, after every green test or discrete task delivering value.
 - Short, direct messages (e.g. `Add user login endpoint`). No file lists.
