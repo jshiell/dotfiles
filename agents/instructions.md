@@ -19,6 +19,7 @@
 
 ## Claims and Verification
 - Never assert that a platform API, config option, or behavior works a certain way without verifying it first (decompile the jar, read the source, or run a spike). If verification isn't possible, label the statement explicitly as an unverified assumption.
+- Before diagnosing an environment/build failure from scratch (permission errors, sandbox denials, tool crashes), check the project's AGENTS.md/CONTRIBUTING.md for a documented known-issue section on it first.
 
 ## Commits
 - Atomic, meaningful, after every green test or discrete task delivering value.
