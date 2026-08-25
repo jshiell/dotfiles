@@ -12,6 +12,9 @@
     "allow_file": [
       "$HOME/dotfiles/gitconfig"
     ],
+    "read": [
+        "$HOME/.config/ccstatusline"
+    ],
     "allow": [
       "$HOME/.config/gh",
       "$HOME/.local/share/mise",
