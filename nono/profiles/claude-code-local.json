@@ -23,6 +23,11 @@
       "$HOME/.m2",
       "$HOME/dotfiles/agents",
       "/Volumes"
+    ],
+    "suppress_save_prompt": [
+      "/System",
+      "/Users",
+      "$HOME"
     ]
   }
 }

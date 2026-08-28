@@ -29,7 +29,7 @@ claude() {
 
     # start in a sandbox, if nono is available
     if nono --version &>/dev/null; then
-        nono run --profile "$NONO_CLAUDE_PROFILE" \
+        HERDR_AGENT=claude nono run --profile "$NONO_CLAUDE_PROFILE" \
             --allow-cwd \
             -- claude "$@"
     else
