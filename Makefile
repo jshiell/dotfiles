@@ -4,7 +4,7 @@ NONO_PROFILE_DIR := $(HOME)/.config/nono/profiles
 NONO_PROFILES := $(notdir $(wildcard $(DOTFILES)/nono/profiles/*))
 
 CLAUDE_AGENT_DIR := $(HOME)/.claude/agents
-CLAUDE_AGENTS := $(notdir $(wildcard $(DOTFILES)/agents/agents/*))
+CLAUDE_AGENTS := $(notdir $(wildcard $(DOTFILES)/agents/claude-agents/*))
 
 CLAUDE_COMMAND_DIR := $(HOME)/.claude/commands
 CLAUDE_COMMANDS := $(notdir $(wildcard $(DOTFILES)/agents/commands/*))
@@ -127,7 +127,7 @@ $(CLAUDE_AGENT_DIR):
 	mkdir -p $@
 
 $(CLAUDE_AGENT_DIR)/%: | $(CLAUDE_AGENT_DIR)
-	ln -sfn $(DOTFILES)/agents/agents/$* $@
+	ln -sfn $(DOTFILES)/agents/claude-agents/$* $@
 
 $(CLAUDE_COMMAND_DIR):
 	mkdir -p $@
