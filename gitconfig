@@ -26,6 +26,10 @@
 	colorMoved = default
 [mergetool]
 	conflictstyle = diff3
+[mergetool "intellij"]
+    cmd = '/Applications/IntelliJ IDEA.app/Contents/macOS/idea' merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+    trustExitCode = true
+    keepBackup = false
 [delta]
 	navigate = true
 	side-by-side = true
