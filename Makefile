@@ -6,7 +6,7 @@ NONO_PROFILES := $(notdir $(wildcard $(DOTFILES)/nono/profiles/*))
 CLAUDE_AGENT_DIR := $(HOME)/.claude/agents
 CLAUDE_AGENTS := $(notdir $(wildcard $(DOTFILES)/agents/claude-agents/*))
 
-OPENCODE_AGENT_DIR := $(HOME)/.config/opencode/agent
+OPENCODE_AGENT_DIR := $(HOME)/.config/opencode/agents
 OPENCODE_AGENTS := $(notdir $(wildcard $(DOTFILES)/agents/opencode-agents/*))
 
 CLAUDE_COMMAND_DIR := $(HOME)/.claude/commands
