@@ -4,8 +4,7 @@ NONO_PROFILE_DIR := $(HOME)/.config/nono/profiles
 NONO_PROFILES := $(notdir $(wildcard $(DOTFILES)/nono/profiles/*))
 
 CLAUDE_AGENT_DIR := $(HOME)/.claude/agents
-OPENCODE_AGENT_DIR := $(HOME)/.config/opencode/agents
-AGENTS := $(notdir $(wildcard $(DOTFILES)/agents/agents/*))
+CLAUDE_AGENTS := $(notdir $(wildcard $(DOTFILES)/agents/agents/*))
 
 CLAUDE_COMMAND_DIR := $(HOME)/.claude/commands
 CLAUDE_COMMANDS := $(notdir $(wildcard $(DOTFILES)/agents/commands/*))
@@ -28,8 +27,7 @@ LINKS := \
 	$(HOME)/.config/opencode/instructions.md \
 	$(HOME)/.ssh/allowed_signers \
 	$(addprefix $(NONO_PROFILE_DIR)/,$(NONO_PROFILES)) \
-	$(addprefix $(CLAUDE_AGENT_DIR)/,$(AGENTS)) \
-	$(addprefix $(OPENCODE_AGENT_DIR)/,$(AGENTS)) \
+	$(addprefix $(CLAUDE_AGENT_DIR)/,$(CLAUDE_AGENTS)) \
 	$(addprefix $(CLAUDE_COMMAND_DIR)/,$(CLAUDE_COMMANDS)) \
 	$(addprefix $(CLAUDE_SKILL_DIR)/,$(SKILLS)) \
 	$(addprefix $(AGENTS_SKILL_DIR)/,$(SKILLS))
@@ -129,12 +127,6 @@ $(CLAUDE_AGENT_DIR):
 	mkdir -p $@
 
 $(CLAUDE_AGENT_DIR)/%: | $(CLAUDE_AGENT_DIR)
-	ln -sfn $(DOTFILES)/agents/agents/$* $@
-
-$(OPENCODE_AGENT_DIR):
-	mkdir -p $@
-
-$(OPENCODE_AGENT_DIR)/%: | $(OPENCODE_AGENT_DIR)
 	ln -sfn $(DOTFILES)/agents/agents/$* $@
 
 $(CLAUDE_COMMAND_DIR):
