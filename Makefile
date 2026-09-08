@@ -10,7 +10,7 @@ OPENCODE_AGENT_DIR := $(HOME)/.config/opencode/agents
 OPENCODE_AGENTS := $(notdir $(wildcard $(DOTFILES)/agents/opencode-agents/*))
 
 CLAUDE_COMMAND_DIR := $(HOME)/.claude/commands
-CLAUDE_COMMANDS := $(notdir $(wildcard $(DOTFILES)/agents/commands/*))
+CLAUDE_COMMANDS := $(notdir $(wildcard $(DOTFILES)/agents/claude-commands/*))
 
 CLAUDE_SKILL_DIR := $(HOME)/.claude/skills
 AGENTS_SKILL_DIR := $(HOME)/.agents/skills
@@ -146,7 +146,7 @@ $(CLAUDE_COMMAND_DIR):
 	mkdir -p $@
 
 $(CLAUDE_COMMAND_DIR)/%: | $(CLAUDE_COMMAND_DIR)
-	ln -sfn $(DOTFILES)/agents/commands/$* $@
+	ln -sfn $(DOTFILES)/agents/claude-commands/$* $@
 
 $(CLAUDE_SKILL_DIR):
 	mkdir -p $@
