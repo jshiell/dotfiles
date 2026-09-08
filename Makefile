@@ -12,6 +12,9 @@ OPENCODE_AGENTS := $(notdir $(wildcard $(DOTFILES)/agents/opencode-agents/*))
 CLAUDE_COMMAND_DIR := $(HOME)/.claude/commands
 CLAUDE_COMMANDS := $(notdir $(wildcard $(DOTFILES)/agents/claude-commands/*))
 
+OPENCODE_COMMAND_DIR := $(HOME)/.config/opencode/commands
+OPENCODE_COMMANDS := $(notdir $(wildcard $(DOTFILES)/agents/opencode-commands/*))
+
 CLAUDE_SKILL_DIR := $(HOME)/.claude/skills
 AGENTS_SKILL_DIR := $(HOME)/.agents/skills
 SKILLS := $(notdir $(wildcard $(DOTFILES)/agents/skills/*))
@@ -33,6 +36,7 @@ LINKS := \
 	$(addprefix $(CLAUDE_AGENT_DIR)/,$(CLAUDE_AGENTS)) \
 	$(addprefix $(OPENCODE_AGENT_DIR)/,$(OPENCODE_AGENTS)) \
 	$(addprefix $(CLAUDE_COMMAND_DIR)/,$(CLAUDE_COMMANDS)) \
+	$(addprefix $(OPENCODE_COMMAND_DIR)/,$(OPENCODE_COMMANDS)) \
 	$(addprefix $(CLAUDE_SKILL_DIR)/,$(SKILLS)) \
 	$(addprefix $(AGENTS_SKILL_DIR)/,$(SKILLS))
 
@@ -147,6 +151,12 @@ $(CLAUDE_COMMAND_DIR):
 
 $(CLAUDE_COMMAND_DIR)/%: | $(CLAUDE_COMMAND_DIR)
 	ln -sfn $(DOTFILES)/agents/claude-commands/$* $@
+
+$(OPENCODE_COMMAND_DIR): | $(HOME)/.config/opencode
+	mkdir -p $@
+
+$(OPENCODE_COMMAND_DIR)/%: | $(OPENCODE_COMMAND_DIR)
+	ln -sfn $(DOTFILES)/agents/opencode-commands/$* $@
 
 $(CLAUDE_SKILL_DIR):
 	mkdir -p $@
