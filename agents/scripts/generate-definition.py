@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Render a platform-agnostic agent definition (agents/definitions/*.md) into
-one target platform's agent file (frontmatter + body).
+"""Render a platform-agnostic agent or command definition (agents/definitions/*.md,
+agents/command-definitions/*.md) into one target platform's file (frontmatter + body).
 
 No third-party dependencies: stdlib only.
 
