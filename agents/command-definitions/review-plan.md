@@ -1,17 +1,31 @@
+<!-- frontmatter:claude
+---
+description: Review a plan critically with the plan-reviewer agent before implementation begins
+argument-hint: "[plan path, or nothing to review the current plan]"
+---
+-->
+<!-- frontmatter:opencode
 ---
 description: Review a plan critically with the plan-reviewer agent before implementation begins
 ---
+-->
 
 Review a plan before any implementation starts.
 
 **Target:** $ARGUMENTS
 
-If no target was given, review the plan for the work in this conversation — the plan you or the user
+<!--only:claude-->If no target was given, review the plan for the work in this conversation — the plan you or the user
+most recently drafted here, or the most relevant file in `~/.claude/plans/`. If several plans could be
+meant, name the candidates and ask which rather than guessing.
+
+Delegate to the `plan-reviewer` agent via the Agent tool (`subagent_type: "plan-reviewer"`,
+`model: "opus"` for a substantial plan, otherwise its own default). `plan-reviewer` cannot search the
+filesystem — it has `Read` but no `Grep`/`Glob`/`Bash` — so give it:<!--/only--><!--only:opencode-->If no target was given, review the plan for the work in this conversation — the plan you or the user
 most recently drafted here, or the most relevant plan file in the repo. If several plans could be
 meant, name the candidates and ask which rather than guessing.
 
 Delegate to the `plan-reviewer` agent via the task tool (`subagent_type: "plan-reviewer"`).
-`plan-reviewer` cannot search the filesystem — it has `read` but no `grep`/`glob`/`bash` — so give it:
+`plan-reviewer` cannot search the filesystem — it has `read` but no `grep`/`glob`/`bash` — so give it:<!--/only-->
 
 - the plan itself, or an absolute path it can read
 - the absolute paths of the files the plan touches, so it can check claims rather than take them on trust

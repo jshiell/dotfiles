@@ -1,13 +1,20 @@
+<!-- frontmatter:claude
 ---
 description: Establish whether a platform API is the right one to use, and how the platform itself does it
 argument-hint: "<the API or the question>"
 ---
+-->
+<!-- frontmatter:opencode
+---
+description: Establish whether a platform API is the right one to use, and how the platform itself does it
+---
+-->
 
 Answer a platform API question: is this the right API, and how does the platform itself do it?
 
 **Question:** $ARGUMENTS
 
-Delegate to the `platform-api-researcher` agent via the Agent tool
+Delegate to the `platform-api-researcher` agent via the {{AGENT_TOOL}} tool
 (`subagent_type: "platform-api-researcher"`). It is read-only and cites a source for every claim.
 
 Give it: the platform and the version this project targets (or tell it to read that from the build), the

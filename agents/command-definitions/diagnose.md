@@ -1,13 +1,20 @@
+<!-- frontmatter:claude
 ---
 description: Root-cause a failure with the diagnostician agent — diagnosis only, no fix
 argument-hint: "<the failure: test name, command, error, or symptom>"
 ---
+-->
+<!-- frontmatter:opencode
+---
+description: Root-cause a failure with the diagnostician agent — diagnosis only, no fix
+---
+-->
 
 Root-cause a failure. Diagnosis only — no fix is applied by this command.
 
 **Failure:** $ARGUMENTS
 
-Delegate to the `diagnostician` agent via the Agent tool (`subagent_type: "diagnostician"`). It is
+Delegate to the `diagnostician` agent via the {{AGENT_TOOL}} tool (`subagent_type: "diagnostician"`). It is
 read-only and stops at a proven cause.
 
 Give it everything you already have: the exact command, the exact output, when it started failing, what
