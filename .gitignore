@@ -6,3 +6,7 @@
 /zed/conversations/
 /zed/settings_backup.json
 /nono/profiles/sn-*.json
+
+# Generated from agents/definitions/ by agents/scripts/generate-agent.py -- not hand-edited.
+/agents/claude-agents/
+/agents/opencode-agents/
