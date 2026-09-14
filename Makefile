@@ -6,9 +6,9 @@ NONO_PROFILES := $(notdir $(wildcard $(DOTFILES)/nono/profiles/*))
 CLAUDE_AGENT_DIR := $(HOME)/.claude/agents
 OPENCODE_AGENT_DIR := $(HOME)/.config/opencode/agents
 
-# Each agent has one templated source in agents/definitions/; agents/claude-agents/ and
+# Each agent has one templated source in agents/agent-definitions/; agents/claude-agents/ and
 # agents/opencode-agents/ are generated from it (see the pattern rules below) and gitignored.
-AGENT_DEFINITIONS := $(notdir $(wildcard $(DOTFILES)/agents/definitions/*.md))
+AGENT_DEFINITIONS := $(notdir $(wildcard $(DOTFILES)/agents/agent-definitions/*.md))
 CLAUDE_AGENTS := $(AGENT_DEFINITIONS)
 OPENCODE_AGENTS := $(AGENT_DEFINITIONS)
 
@@ -147,11 +147,11 @@ $(CLAUDE_AGENT_DIR):
 	mkdir -p $@
 
 # Generate the platform-specific agent file from its templated source.
-$(DOTFILES)/agents/claude-agents/%.md: $(DOTFILES)/agents/definitions/%.md $(DOTFILES)/agents/scripts/generate-definition.py
+$(DOTFILES)/agents/claude-agents/%.md: $(DOTFILES)/agents/agent-definitions/%.md $(DOTFILES)/agents/scripts/generate-definition.py
 	@mkdir -p $(DOTFILES)/agents/claude-agents
 	python3 $(DOTFILES)/agents/scripts/generate-definition.py --target claude $< $@
 
-$(DOTFILES)/agents/opencode-agents/%.md: $(DOTFILES)/agents/definitions/%.md $(DOTFILES)/agents/scripts/generate-definition.py
+$(DOTFILES)/agents/opencode-agents/%.md: $(DOTFILES)/agents/agent-definitions/%.md $(DOTFILES)/agents/scripts/generate-definition.py
 	@mkdir -p $(DOTFILES)/agents/opencode-agents
 	python3 $(DOTFILES)/agents/scripts/generate-definition.py --target opencode $< $@
 
