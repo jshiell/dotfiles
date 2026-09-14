@@ -21,6 +21,9 @@
 - Never assert that a platform API, config option, or behavior works a certain way without verifying it first (decompile the jar, read the source, or run a spike). If verification isn't possible, label the statement explicitly as an unverified assumption.
 - Before diagnosing an environment/build failure from scratch (permission errors, sandbox denials, tool crashes), check the project's AGENTS.md/CONTRIBUTING.md for a documented known-issue section on it first.
 
+## Environment Constraints
+- You are sandboxed and cannot access certain files and directories. If something needs file or directory access and permission is blocked, stop and ask the user to run the single command in their terminal rather than retrying.
+
 ## Commits
 - Atomic, meaningful, after every green test or discrete task delivering value.
 - Short, direct messages (e.g. `Add user login endpoint`). No file lists.
