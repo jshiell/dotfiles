@@ -1,0 +1,12 @@
+[tools]
+claude-code = "latest"
+java = "liberica-25"
+node = "26"
+python = "3.14"
+ruby = "4.0"
+uv = "latest"
+
+[settings]
+
+[settings.ruby]
+compile = false
