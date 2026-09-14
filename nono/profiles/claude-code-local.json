@@ -22,7 +22,8 @@
       "$HOME/.gradle",
       "$HOME/.m2",
       "$HOME/dotfiles/agents",
-      "/Volumes"
+      "/Volumes",
+      "$HOME/Library/Application Support/JetBrains"
     ],
     "suppress_save_prompt": [
       "/System",
