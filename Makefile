@@ -46,7 +46,7 @@ LINKS := \
 	$(HOME)/.config/starship.toml \
 	$(HOME)/.config/zed \
 	$(HOME)/.config/opencode/instructions.md \
-	$(HOME)/.config/mise \
+	$(HOME)/.config/mise/config.toml \
 	$(HOME)/.ssh/allowed_signers \
 	$(addprefix $(NONO_PROFILE_DIR)/,$(NONO_PROFILES)) \
 	$(addprefix $(CLAUDE_AGENT_DIR)/,$(CLAUDE_AGENTS)) \
@@ -135,7 +135,10 @@ $(HOME)/.config/zed: | $(HOME)/.config
 	ln -sfn $(DOTFILES)/zed $@
 
 $(HOME)/.config/mise: | $(HOME)/.config
-	ln -sfn $(DOTFILES)/mise $@
+	mkdir -p $@
+
+$(HOME)/.config/mise/config.toml: | $(HOME)/.config/mise
+	ln -sfn $(DOTFILES)/mise/config.toml $@
 
 $(HOME)/.ssh:
 	mkdir -p $@
