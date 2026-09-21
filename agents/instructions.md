@@ -31,7 +31,7 @@
 ## Source control/Git
 - Only rebase, never merge or squash commits.
 - Never push, even if instructed to.
-- Commit signing uses the 1Password SSH agent; if a commit fails to sign, stop after the first failure and ask the user to approve the 1Password prompt — do not retry the same commit again before asking, even once.
+- Commit signing uses the 1Password SSH agent; if a commit fails to sign, commit unsigned. Once you are complete or need user input, sign all the unsigned commits you made. If this fails, stop after the first failure and ask the user to approve the 1Password prompt — do not retry the signing process again, even once.
 
 ## Subagents
 - Choose the model for sub-agents explicitly; don't inherit the session model on spawn.
