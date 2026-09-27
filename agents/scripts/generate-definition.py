@@ -37,6 +37,9 @@ VOCAB = {
     "opencode": {
         "BASH_TOOL": "bash",
     },
+    "codex": {
+        "BASH_TOOL": "shell",
+    },
 }
 
 FRONTMATTER_RE = re.compile(r"<!--\s*frontmatter:(\w+)\s*\n(.*?)\n-->\n?", re.DOTALL)
