@@ -9,6 +9,12 @@ argument-hint: "<the API or the question>"
 description: Establish whether a platform API is the right one to use, and how the platform itself does it
 ---
 -->
+<!-- frontmatter:codex
+---
+description: Establish whether a platform API is the right one to use, and how the platform itself does it
+argument-hint: "<the API or the question>"
+---
+-->
 
 Answer a platform API question: is this the right API, and how does the platform itself do it?
 

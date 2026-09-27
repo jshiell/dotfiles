@@ -9,6 +9,12 @@ argument-hint: "<the failure: test name, command, error, or symptom>"
 description: Root-cause a failure with the diagnostician agent — diagnosis only, no fix
 ---
 -->
+<!-- frontmatter:codex
+---
+description: Root-cause a failure with the diagnostician agent — diagnosis only, no fix
+argument-hint: "<the failure: test name, command, error, or symptom>"
+---
+-->
 
 Root-cause a failure. Diagnosis only — no fix is applied by this command.
 

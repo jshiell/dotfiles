@@ -9,6 +9,12 @@ argument-hint: "<version> [template commit]"
 description: Replicate a previous version-bump commit for a new version, using it as a template
 ---
 -->
+<!-- frontmatter:codex
+---
+description: Replicate a previous version-bump commit for a new version, using it as a template
+argument-hint: "<version> [template commit]"
+---
+-->
 
 Add support for a new version by replicating a previous bump commit.
 

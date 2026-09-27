@@ -9,6 +9,12 @@ argument-hint: "[plan path, or nothing to review the current plan]"
 description: Review a plan critically with the plan-reviewer agent before implementation begins
 ---
 -->
+<!-- frontmatter:codex
+---
+description: Review a plan critically with the plan-reviewer agent before implementation begins
+argument-hint: "[plan path, or nothing to review the current plan]"
+---
+-->
 
 Review a plan before any implementation starts.
 
@@ -25,7 +31,13 @@ most recently drafted here, or the most relevant plan file in the repo. If sever
 meant, name the candidates and ask which rather than guessing.
 
 Delegate to the `plan-reviewer` agent via the task tool (`subagent_type: "plan-reviewer"`).
-`plan-reviewer` cannot search the filesystem — it has `read` but no `grep`/`glob`/`bash` — so give it:<!--/only-->
+`plan-reviewer` cannot search the filesystem — it has `read` but no `grep`/`glob`/`bash` — so give it:<!--/only--><!--only:codex-->If no target was given, review the plan for the work in this conversation — the plan you or the user
+most recently drafted here, or the most relevant plan file in the repo. If several plans could be
+meant, name the candidates and ask which rather than guessing.
+
+Delegate to the `plan-reviewer` agent via natural-language delegation ("spawn a subagent to review the
+plan, using the `plan-reviewer` agent definition"). `plan-reviewer` cannot search the filesystem — it
+has no file-search tools of its own — so give it:<!--/only-->
 
 - the plan itself, or an absolute path it can read
 - the absolute paths of the files the plan touches, so it can check claims rather than take them on trust

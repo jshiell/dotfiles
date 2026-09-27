@@ -9,6 +9,12 @@ argument-hint: "[plan path] [commit range]"
 description: Audit unpushed commits against an approved plan — done, partial, missing, unplanned
 ---
 -->
+<!-- frontmatter:codex
+---
+description: Audit unpushed commits against an approved plan — done, partial, missing, unplanned
+argument-hint: "[plan path] [commit range]"
+---
+-->
 
 Audit the commits on this branch against the plan they were meant to implement.
 
@@ -25,6 +31,8 @@ Supply what you know:
 <!--only:claude-->- the plan (an absolute path — `~/.claude/plans/…` or a repo document). If you do not know which plan,
   say so and let it resolve; do not guess, because auditing against the wrong plan produces confident
   nonsense.<!--/only--><!--only:opencode-->- the plan (an absolute path to a repo document, or wherever plans are kept in this project). If you do
+  not know which plan, say so and let it resolve; do not guess, because auditing against the wrong plan
+  produces confident nonsense.<!--/only--><!--only:codex-->- the plan (an absolute path to a repo document, or wherever plans are kept in this project). If you do
   not know which plan, say so and let it resolve; do not guess, because auditing against the wrong plan
   produces confident nonsense.<!--/only-->
 - the commit range, if it is not simply `@{upstream}..HEAD`

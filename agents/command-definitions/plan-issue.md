@@ -9,6 +9,12 @@ argument-hint: "[github issue number]"
 description: Examine a GitHub issue, assess feasibility, and prepare a reviewed implementation plan
 ---
 -->
+<!-- frontmatter:codex
+---
+description: Examine a GitHub issue, assess feasibility, and prepare a reviewed implementation plan
+argument-hint: "[github issue number]"
+---
+-->
 
 Prepare an implementation plan for a given GitHub issue.
 
@@ -22,4 +28,7 @@ If no target was given, stop and ask the user to provide a GitHub issue number.
 <!--only:claude-->4. Launch the plan-reviewer subagent adversarially against plan.md. Fix every defect it finds.
 5. ONLY THEN call ExitPlanMode with the revised plan.<!--/only--><!--only:opencode-->4. Delegate to the `plan-reviewer` agent via the task tool (`subagent_type: "plan-reviewer"`)
    adversarially against the plan. Fix every defect it finds.
+5. ONLY THEN present the revised plan to the user and wait for approval before implementation begins.<!--/only--><!--only:codex-->4. Delegate to the `plan-reviewer` agent via natural-language delegation ("spawn a subagent to review
+   the plan, using the `plan-reviewer` agent definition") adversarially against the plan. Fix every
+   defect it finds.
 5. ONLY THEN present the revised plan to the user and wait for approval before implementation begins.<!--/only-->
