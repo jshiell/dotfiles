@@ -23,6 +23,7 @@ OPENCODE_COMMANDS := $(COMMAND_DEFINITIONS)
 
 CLAUDE_SKILL_DIR := $(HOME)/.claude/skills
 AGENTS_SKILL_DIR := $(HOME)/.agents/skills
+CODEX_SKILL_DIR := $(HOME)/.codex/skills
 SKILLS := $(notdir $(wildcard $(DOTFILES)/agents/skills/*))
 
 LINKS := \
@@ -32,6 +33,7 @@ LINKS := \
 	$(HOME)/.vimrc \
 	$(HOME)/.zshrc \
 	$(HOME)/.claude/CLAUDE.md \
+	$(HOME)/.codex/AGENTS.md \
 	$(HOME)/.config/ghostty \
 	$(HOME)/.config/helix \
 	$(HOME)/.config/starship.toml \
@@ -45,7 +47,8 @@ LINKS := \
 	$(addprefix $(CLAUDE_COMMAND_DIR)/,$(CLAUDE_COMMANDS)) \
 	$(addprefix $(OPENCODE_COMMAND_DIR)/,$(OPENCODE_COMMANDS)) \
 	$(addprefix $(CLAUDE_SKILL_DIR)/,$(SKILLS)) \
-	$(addprefix $(AGENTS_SKILL_DIR)/,$(SKILLS))
+	$(addprefix $(AGENTS_SKILL_DIR)/,$(SKILLS)) \
+	$(addprefix $(CODEX_SKILL_DIR)/,$(SKILLS))
 
 .PHONY: install
 install: $(LINKS) ## Symlink all dotfiles into place
@@ -147,6 +150,12 @@ $(HOME)/.claude:
 $(HOME)/.claude/CLAUDE.md: | $(HOME)/.claude
 	ln -sfn $(DOTFILES)/agents/instructions.md $@
 
+$(HOME)/.codex:
+	mkdir -p $@
+
+$(HOME)/.codex/AGENTS.md: | $(HOME)/.codex
+	ln -sfn $(DOTFILES)/agents/instructions.md $@
+
 $(CLAUDE_AGENT_DIR):
 	mkdir -p $@
 
@@ -202,4 +211,10 @@ $(AGENTS_SKILL_DIR):
 	mkdir -p $@
 
 $(AGENTS_SKILL_DIR)/%: | $(AGENTS_SKILL_DIR)
+	ln -sfn $(DOTFILES)/agents/skills/$* $@
+
+$(CODEX_SKILL_DIR): | $(HOME)/.codex
+	mkdir -p $@
+
+$(CODEX_SKILL_DIR)/%: | $(CODEX_SKILL_DIR)
 	ln -sfn $(DOTFILES)/agents/skills/$* $@
