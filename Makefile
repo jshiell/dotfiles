@@ -5,12 +5,16 @@ NONO_PROFILES := $(notdir $(wildcard $(DOTFILES)/nono/profiles/*))
 
 CLAUDE_AGENT_DIR := $(HOME)/.claude/agents
 OPENCODE_AGENT_DIR := $(HOME)/.config/opencode/agents
+CODEX_AGENT_DIR := $(HOME)/.codex/agents
 
-# Each agent has one templated source in agents/agent-definitions/; agents/build/claude-agents/ and
-# agents/build/opencode-agents/ are generated from it (see the pattern rules below) and gitignored.
+# Each agent has one templated source in agents/agent-definitions/; agents/build/claude-agents/,
+# agents/build/opencode-agents/ and agents/build/codex-agents/ are generated from it (see the pattern
+# rules below) and gitignored. Codex agents are whole-file TOML, not markdown, so CODEX_AGENTS carries
+# the .toml extension instead of reusing AGENT_DEFINITIONS directly.
 AGENT_DEFINITIONS := $(notdir $(wildcard $(DOTFILES)/agents/agent-definitions/*.md))
 CLAUDE_AGENTS := $(AGENT_DEFINITIONS)
 OPENCODE_AGENTS := $(AGENT_DEFINITIONS)
+CODEX_AGENTS := $(AGENT_DEFINITIONS:.md=.toml)
 
 CLAUDE_COMMAND_DIR := $(HOME)/.claude/commands
 OPENCODE_COMMAND_DIR := $(HOME)/.config/opencode/commands
@@ -46,6 +50,7 @@ LINKS := \
 	$(addprefix $(NONO_PROFILE_DIR)/,$(NONO_PROFILES)) \
 	$(addprefix $(CLAUDE_AGENT_DIR)/,$(CLAUDE_AGENTS)) \
 	$(addprefix $(OPENCODE_AGENT_DIR)/,$(OPENCODE_AGENTS)) \
+	$(addprefix $(CODEX_AGENT_DIR)/,$(CODEX_AGENTS)) \
 	$(addprefix $(CLAUDE_COMMAND_DIR)/,$(CLAUDE_COMMANDS)) \
 	$(addprefix $(OPENCODE_COMMAND_DIR)/,$(OPENCODE_COMMANDS)) \
 	$(addprefix $(CODEX_COMMAND_DIR)/,$(CODEX_COMMANDS)) \
@@ -171,6 +176,10 @@ $(DOTFILES)/agents/build/opencode-agents/%.md: $(DOTFILES)/agents/agent-definiti
 	@mkdir -p $(DOTFILES)/agents/build/opencode-agents
 	python3 $(DOTFILES)/agents/scripts/generate-definition.py --target opencode $< $@
 
+$(DOTFILES)/agents/build/codex-agents/%.toml: $(DOTFILES)/agents/agent-definitions/%.md $(DOTFILES)/agents/scripts/generate-definition.py
+	@mkdir -p $(DOTFILES)/agents/build/codex-agents
+	python3 $(DOTFILES)/agents/scripts/generate-definition.py --target codex $< $@
+
 $(CLAUDE_AGENT_DIR)/%: $(DOTFILES)/agents/build/claude-agents/% | $(CLAUDE_AGENT_DIR)
 	ln -sfn $(DOTFILES)/agents/build/claude-agents/$* $@
 
@@ -182,6 +191,12 @@ $(OPENCODE_AGENT_DIR)/%: $(DOTFILES)/agents/build/opencode-agents/% | $(OPENCODE
 
 $(HOME)/.config/opencode/agent-memory: | $(HOME)/.config/opencode
 	mkdir -p $@
+
+$(CODEX_AGENT_DIR): | $(HOME)/.codex
+	mkdir -p $@
+
+$(CODEX_AGENT_DIR)/%: $(DOTFILES)/agents/build/codex-agents/% | $(CODEX_AGENT_DIR)
+	ln -sfn $(DOTFILES)/agents/build/codex-agents/$* $@
 
 # Generate the platform-specific command file from its templated source.
 $(DOTFILES)/agents/build/claude-commands/%.md: $(DOTFILES)/agents/command-definitions/%.md $(DOTFILES)/agents/scripts/generate-definition.py
