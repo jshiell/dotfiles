@@ -14,8 +14,10 @@ Root-cause a failure. Diagnosis only — no fix is applied by this command.
 
 **Failure:** $ARGUMENTS
 
-Delegate to the `diagnostician` agent via the {{AGENT_TOOL}} tool (`subagent_type: "diagnostician"`). It is
-read-only and stops at a proven cause.
+<!--only:claude-->Delegate to the `diagnostician` agent via the Agent tool (`subagent_type: "diagnostician"`). It is
+read-only and stops at a proven cause.<!--/only--><!--only:opencode-->Delegate to the `diagnostician` agent via the task tool (`subagent_type: "diagnostician"`). It is
+read-only and stops at a proven cause.<!--/only--><!--only:codex-->Delegate to the `diagnostician` agent via natural-language delegation ("spawn a subagent for diagnosis,
+using the `diagnostician` agent definition"). It is read-only and stops at a proven cause.<!--/only-->
 
 Give it everything you already have: the exact command, the exact output, when it started failing, what
 has already been ruled out, and whether it is deterministic or intermittent. Anything you withhold, it

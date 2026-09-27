@@ -14,8 +14,11 @@ Audit the commits on this branch against the plan they were meant to implement.
 
 **Arguments:** $ARGUMENTS
 
-Delegate to the `commit-auditor` agent via the {{AGENT_TOOL}} tool (`subagent_type: "commit-auditor"`). It is
-read-only — it reports, it does not repair, and it must leave the working tree unchanged.
+<!--only:claude-->Delegate to the `commit-auditor` agent via the Agent tool (`subagent_type: "commit-auditor"`). It is
+read-only — it reports, it does not repair, and it must leave the working tree unchanged.<!--/only--><!--only:opencode-->Delegate to the `commit-auditor` agent via the task tool (`subagent_type: "commit-auditor"`). It is
+read-only — it reports, it does not repair, and it must leave the working tree unchanged.<!--/only--><!--only:codex-->Delegate to the `commit-auditor` agent via natural-language delegation ("spawn a subagent to audit
+commits, using the `commit-auditor` agent definition"). It is read-only — it reports, it does not
+repair, and it must leave the working tree unchanged.<!--/only-->
 
 Supply what you know:
 

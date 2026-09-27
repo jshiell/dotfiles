@@ -21,8 +21,11 @@ before proceeding — the wrong template silently produces a wrong bump.
 Then read the template in full — `git show <commit>` — and enumerate every file it touched and what it
 did to each. That enumeration is the work list.
 
-Delegate to the `implementation` agent via the {{AGENT_TOOL}} tool (`subagent_type: "implementation"`), passing
-the target version, the template commit, and your enumeration.
+<!--only:claude-->Delegate to the `implementation` agent via the Agent tool (`subagent_type: "implementation"`), passing
+the target version, the template commit, and your enumeration.<!--/only--><!--only:opencode-->Delegate to the `implementation` agent via the task tool (`subagent_type: "implementation"`), passing
+the target version, the template commit, and your enumeration.<!--/only--><!--only:codex-->Delegate to the `implementation` agent via natural-language delegation ("spawn a subagent for
+implementation, using the `implementation` agent definition"), passing the target version, the template
+commit, and your enumeration.<!--/only-->
 
 ## TDD position
 

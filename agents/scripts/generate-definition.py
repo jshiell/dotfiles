@@ -32,11 +32,9 @@ import re
 
 VOCAB = {
     "claude": {
-        "AGENT_TOOL": "Agent",
         "BASH_TOOL": "Bash",
     },
     "opencode": {
-        "AGENT_TOOL": "task",
         "BASH_TOOL": "bash",
     },
 }

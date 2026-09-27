@@ -14,8 +14,11 @@ Answer a platform API question: is this the right API, and how does the platform
 
 **Question:** $ARGUMENTS
 
-Delegate to the `platform-api-researcher` agent via the {{AGENT_TOOL}} tool
-(`subagent_type: "platform-api-researcher"`). It is read-only and cites a source for every claim.
+<!--only:claude-->Delegate to the `platform-api-researcher` agent via the Agent tool
+(`subagent_type: "platform-api-researcher"`). It is read-only and cites a source for every claim.<!--/only--><!--only:opencode-->Delegate to the `platform-api-researcher` agent via the task tool
+(`subagent_type: "platform-api-researcher"`). It is read-only and cites a source for every claim.<!--/only--><!--only:codex-->Delegate to the `platform-api-researcher` agent via natural-language delegation ("spawn a subagent
+for platform API research, using the `platform-api-researcher` agent definition"). It is read-only and
+cites a source for every claim.<!--/only-->
 
 Give it: the platform and the version this project targets (or tell it to read that from the build), the
 call site or the job to be done, and what has already been established so it does not re-derive it.
