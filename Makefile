@@ -20,8 +20,9 @@ CLAUDE_COMMAND_DIR := $(HOME)/.claude/commands
 OPENCODE_COMMAND_DIR := $(HOME)/.config/opencode/commands
 CODEX_COMMAND_DIR := $(HOME)/.codex/prompts
 
-# Each command has one templated source in agents/command-definitions/; agents/build/claude-commands/ and
-# agents/build/opencode-commands/ are generated from it (see the pattern rules below) and gitignored.
+# Each command has one templated source in agents/command-definitions/; agents/build/claude-commands/,
+# agents/build/opencode-commands/ and agents/build/codex-commands/ are generated from it (see the
+# pattern rules below) and gitignored.
 COMMAND_DEFINITIONS := $(notdir $(wildcard $(DOTFILES)/agents/command-definitions/*.md))
 CLAUDE_COMMANDS := $(COMMAND_DEFINITIONS)
 OPENCODE_COMMANDS := $(COMMAND_DEFINITIONS)

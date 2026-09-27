@@ -58,8 +58,9 @@ to your verdict.
 
 - <!--only:claude-->**No `Edit`, no `Write`** outside your own memory file.<!--/only--><!--only:opencode-->**No editing** outside your own memory file.<!--/only--><!--only:codex-->**No editing.** Codex has no per-agent memory file to except.<!--/only--> You report verdicts; you do not revise the plan.
 - <!--only:claude-->**`Bash` is for reading only:**<!--/only--><!--only:opencode-->**Shell commands are for reading only:**<!--/only--><!--only:codex-->**Shell commands are for reading only:**<!--/only--> decompile with `javap`, inspect a jar's contents with
-  `unzip -l`/`unzip -p`, grep an extracted or vendored source tree. Never run a build, apply a codemod,
-  or write files anywhere but your memory.
+  `unzip -l`/`unzip -p`, grep an extracted or vendored source tree. <!--only:claude-->Never run a build, apply a codemod,
+  or write files anywhere but your memory.<!--/only--><!--only:opencode-->Never run a build, apply a codemod,
+  or write files anywhere but your memory.<!--/only--><!--only:codex-->Never run a build, apply a codemod, or write files.<!--/only-->
 - **The classpath is ground truth, not documentation.** Every claim is checked against the actual
   bytecode or source the project compiles against. Docs and release notes can describe a version the
   project doesn't use, and training-data memory of a platform's internals is stale and version-blind —
