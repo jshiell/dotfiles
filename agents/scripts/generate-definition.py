@@ -26,6 +26,15 @@ Source file format:
     swaps (e.g. tool-name casing) that recur across many definitions -- see
     VOCAB below. Larger or one-off differences should use <!--only:target-->
     blocks instead of growing VOCAB.
+
+Codex agent definitions render to a whole-file TOML document rather than
+frontmatter + markdown body. A `frontmatter:codex` block for an agent is raw
+TOML scalar keys (no `---` fencing -- FRONTMATTER_RE only requires text
+between the marker and the closing `-->`), and the rendered body is appended
+as a `developer_instructions` TOML literal string. This only happens when
+the destination file ends in `.toml`; a `--target codex` render to a `.md`
+destination (commands) stays plain frontmatter + markdown, like the other
+two targets.
 """
 import argparse
 import re
@@ -47,7 +56,7 @@ ONLY_RE = re.compile(r"<!--\s*only:(\w+)\s*-->(.*?)<!--\s*/only\s*-->", re.DOTAL
 TOKEN_RE = re.compile(r"\{\{(\w+)\}\}")
 
 
-def render(source: str, target: str) -> str:
+def render(source: str, target: str, toml_body: bool = False) -> str:
     frontmatters = {}
 
     def collect(m: re.Match) -> str:
@@ -73,8 +82,19 @@ def render(source: str, target: str) -> str:
         return vocab[name]
 
     body = TOKEN_RE.sub(resolve_token, body)
+    body = body.strip("\n")
 
-    return frontmatters[target].strip("\n") + "\n\n" + body.strip("\n") + "\n"
+    frontmatter = frontmatters[target].strip("\n")
+
+    if toml_body:
+        if "'''" in body:
+            raise SystemExit(
+                "body contains a literal ''' sequence, which cannot be embedded in a TOML "
+                "literal string -- rewrite the source body to avoid it"
+            )
+        return frontmatter + "\n" + "developer_instructions = '''\n" + body + "\n'''\n"
+
+    return frontmatter + "\n\n" + body + "\n"
 
 
 def main() -> None:
@@ -87,7 +107,7 @@ def main() -> None:
     with open(args.source, encoding="utf-8") as f:
         source = f.read()
 
-    rendered = render(source, args.target)
+    rendered = render(source, args.target, toml_body=args.target == "codex" and args.dest.endswith(".toml"))
 
     with open(args.dest, "w", encoding="utf-8") as f:
         f.write(rendered)
