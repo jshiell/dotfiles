@@ -14,12 +14,14 @@ OPENCODE_AGENTS := $(AGENT_DEFINITIONS)
 
 CLAUDE_COMMAND_DIR := $(HOME)/.claude/commands
 OPENCODE_COMMAND_DIR := $(HOME)/.config/opencode/commands
+CODEX_COMMAND_DIR := $(HOME)/.codex/prompts
 
 # Each command has one templated source in agents/command-definitions/; agents/build/claude-commands/ and
 # agents/build/opencode-commands/ are generated from it (see the pattern rules below) and gitignored.
 COMMAND_DEFINITIONS := $(notdir $(wildcard $(DOTFILES)/agents/command-definitions/*.md))
 CLAUDE_COMMANDS := $(COMMAND_DEFINITIONS)
 OPENCODE_COMMANDS := $(COMMAND_DEFINITIONS)
+CODEX_COMMANDS := $(COMMAND_DEFINITIONS)
 
 CLAUDE_SKILL_DIR := $(HOME)/.claude/skills
 AGENTS_SKILL_DIR := $(HOME)/.agents/skills
@@ -46,6 +48,7 @@ LINKS := \
 	$(addprefix $(OPENCODE_AGENT_DIR)/,$(OPENCODE_AGENTS)) \
 	$(addprefix $(CLAUDE_COMMAND_DIR)/,$(CLAUDE_COMMANDS)) \
 	$(addprefix $(OPENCODE_COMMAND_DIR)/,$(OPENCODE_COMMANDS)) \
+	$(addprefix $(CODEX_COMMAND_DIR)/,$(CODEX_COMMANDS)) \
 	$(addprefix $(CLAUDE_SKILL_DIR)/,$(SKILLS)) \
 	$(addprefix $(AGENTS_SKILL_DIR)/,$(SKILLS)) \
 	$(addprefix $(CODEX_SKILL_DIR)/,$(SKILLS))
@@ -189,6 +192,10 @@ $(DOTFILES)/agents/build/opencode-commands/%.md: $(DOTFILES)/agents/command-defi
 	@mkdir -p $(DOTFILES)/agents/build/opencode-commands
 	python3 $(DOTFILES)/agents/scripts/generate-definition.py --target opencode $< $@
 
+$(DOTFILES)/agents/build/codex-commands/%.md: $(DOTFILES)/agents/command-definitions/%.md $(DOTFILES)/agents/scripts/generate-definition.py
+	@mkdir -p $(DOTFILES)/agents/build/codex-commands
+	python3 $(DOTFILES)/agents/scripts/generate-definition.py --target codex $< $@
+
 $(CLAUDE_COMMAND_DIR):
 	mkdir -p $@
 
@@ -200,6 +207,12 @@ $(OPENCODE_COMMAND_DIR): | $(HOME)/.config/opencode
 
 $(OPENCODE_COMMAND_DIR)/%: $(DOTFILES)/agents/build/opencode-commands/% | $(OPENCODE_COMMAND_DIR)
 	ln -sfn $(DOTFILES)/agents/build/opencode-commands/$* $@
+
+$(CODEX_COMMAND_DIR): | $(HOME)/.codex
+	mkdir -p $@
+
+$(CODEX_COMMAND_DIR)/%: $(DOTFILES)/agents/build/codex-commands/% | $(CODEX_COMMAND_DIR)
+	ln -sfn $(DOTFILES)/agents/build/codex-commands/$* $@
 
 $(CLAUDE_SKILL_DIR):
 	mkdir -p $@
