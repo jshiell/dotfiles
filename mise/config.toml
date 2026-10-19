@@ -2,7 +2,7 @@
 claude-code = "latest"
 java = "liberica-25"
 node = "26"
-opencode = "latest"
+nono = "latest"
 python = "3.14"
 ruby = "4.0"
 uv = "latest"

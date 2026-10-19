@@ -13,7 +13,8 @@
       "$HOME/dotfiles/gitconfig"
     ],
     "read": [
-        "$HOME/.config/ccstatusline"
+        "$HOME/.config/ccstatusline",
+        "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t"
     ],
     "allow": [
       "$HOME/.config/gh",
@@ -24,6 +25,13 @@
       "$HOME/dotfiles/agents",
       "/Volumes",
       "$HOME/Library/Application Support/JetBrains"
+    ],
+    "unix_socket": [
+      "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+    ],
+    "bypass_protection": [
+      "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t",
+      "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
     ],
     "suppress_save_prompt": [
       "/System",
