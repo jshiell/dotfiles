@@ -10,9 +10,11 @@
 - Use the `tdd` skill: Red (smallest failing test) → Green (minimal code, no over-engineering) → Refactor (remove duplication, don't change behaviour).
 - Never skip tests. Never modify passing tests to make new code compile.
 - One test, one implementation, one commit per increment.
+- In a plan, mark a cycle as a guard (not red) when an earlier cycle's implementation already covers it.
 
 ## Workflow
 1. Clarify requirements before writing code.
+2. Before planning a change to user-visible output, grep the tests for the exact strings it touches, and list those tests in the plan.
 2. Propose a plan and wait for approval before non-trivial changes (more than one file touched, or any new public API/behaviour).
 3. Implement one increment at a time; commit after each green test.
 4. Run the `verify` skill before declaring work done. No large diffs.
@@ -23,6 +25,7 @@
 
 ## Environment Constraints
 - You are sandboxed and cannot access certain files and directories. If something needs file or directory access and permission is blocked, stop and ask the user to run the single command in their terminal rather than retrying.
+- On macOS, BSD sed -i edits are unreliable. Use the Edit tool, or a short Python script for bulk edits.
 
 ## Commits
 - Atomic, meaningful, after every green test or discrete task delivering value.
