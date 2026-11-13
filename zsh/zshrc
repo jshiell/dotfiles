@@ -27,3 +27,7 @@ _ZSH_CONFIG_FILES=($_ZSH_CONFIG_DIR/*.zsh)
 for ZSH_CONFIG_FILE in ${_ZSH_CONFIG_FILES}; do
   source "$ZSH_CONFIG_FILE"
 done
+
+if [[ -f "$HOME/.zshrc.local" ]]; then
+    source "$HOME/.zshrc.local"
+fi
