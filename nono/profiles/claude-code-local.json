@@ -22,6 +22,7 @@
       "$HOME/.agents/skills",
       "$HOME/.gradle",
       "$HOME/.m2",
+      "$HOME/.harness",
       "$HOME/dotfiles/agents",
       "/Volumes",
       "$HOME/Library/Application Support/JetBrains"
