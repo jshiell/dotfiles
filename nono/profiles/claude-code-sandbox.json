@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "name": "claude-code-local",
+    "description": "Claude Code for a Linux sandbox",
+    "author": "Jamie Shiell"
+  },
+  "extends": "nolabs-ai/claude",
+  "groups": {
+    "include": ["java_runtime"]
+  },
+  "filesystem": {
+    "allow_file": [
+      "$HOME/dotfiles/gitconfig"
+    ],
+    "read": [
+        "$HOME/.config/ccstatusline",
+        "$HOME/.ssh"
+    ],
+    "allow": [
+      "$HOME/.config/gh",
+      "$HOME/.local/share/mise",
+      "$HOME/.agents/skills",
+      "$HOME/.gradle",
+      "$HOME/.m2",
+      "$HOME/.harness",
+      "$HOME/dotfiles/agents"
+    ],
+    "suppress_save_prompt": [
+      "$HOME"
+    ]
+  }
+}
