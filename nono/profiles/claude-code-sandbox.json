@@ -14,9 +14,12 @@
     ],
     "read": [
         "$HOME/.config/ccstatusline",
+        "$HOME/.config/gh/config.yml",
         "$HOME/.ssh"
     ],
     "allow": [
+      "$HOME/.cache/ms-playwright",
+      "$HOME/.cache/uv",
       "$HOME/.config/gh",
       "$HOME/.local/share/mise",
       "$HOME/.agents/skills",
