@@ -22,15 +22,5 @@ if [[ -x "$HOMEBREW_BASE_PATH/bin/brew" ]]; then
         export MAGICK_HOME="$HOMEBREW_BASE_PATH/opt/imagemagick@6"
     fi
 
-    if bat --version >/dev/null 2>&1; then
-        alias cat=bat
-    elif batcat --version >/dev/null 2>&1; then
-        alias cat=batcat
-    fi
-
-    if prettyping --help >/dev/null 2>&1; then
-        alias ping='prettyping --nolegend'
-    fi
-
     export HOMEBREW_CASK_OPTS="--appdir=/Applications --prefpanedir=/Library/PreferencePanes"
 fi
